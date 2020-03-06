@@ -8,7 +8,7 @@ import Engine.Velocity;
 public class SceneObject {
     int mass;
     boolean isRigid;
-    Position transform;
+    Transform transform;
     Velocity vitesse;
 
 
