@@ -46,6 +46,26 @@ public class Vector3D {
         z += vector.getZ();
     }
 
+    /**
+     * Multilpier chaque terme d'un vecteur par un terme
+     * @param mul Terme a utiliser
+     */
+    public void addMultiplicator(double mul){
+        x *= mul;
+        y *= mul;
+        z *= mul;
+    }
+
+    /**
+     * Diviser chaque terme d'un vecteur par un terme
+     * @param mul Terme a utiliser
+     */
+    public void subMultiplicator(double mul){
+        x /= mul;
+        y /= mul;
+        z /= mul;
+    }
+
     public double getX() {
         return x;
     }
