@@ -3,7 +3,7 @@ package Object;
 /**
  * @author Linden Brochu
  */
-public class Position {
+public class Transform {
     private Position3D pos;
     private double[] rotation = new double[3]; //Rotation
 
@@ -13,7 +13,7 @@ public class Position {
      * @param y Position axe y
      * @param z Position axe z
      */
-    public Position(double x, double y, double z){
+    public Transform(double x, double y, double z){
         pos = new Position3D(x, y, z);
     }
 
@@ -25,7 +25,7 @@ public class Position {
      * @param rotH Rotation horizontale
      * @param rotV Rotation verticale
      */
-    public Position(double x, double y, double z, double rotH, double rotV){
+    public Transform(double x, double y, double z, double rotH, double rotV){
         pos = new Position3D(x, y, z);
         rotation[0] = rotH;
         rotation[1] = rotV;
@@ -41,7 +41,7 @@ public class Position {
      * @param rotV Rotation verticale
      * @param rotLocal Rotation radiale centrée sur l'axe locale créer par les 2 autres axes de rotation
      */
-    public Position(double x, double y, double z, double rotH, double rotV, double rotLocal){
+    public Transform(double x, double y, double z, double rotH, double rotV, double rotLocal){
         pos = new Position3D(x, y, z);
         rotation[0] = rotH;
         rotation[1] = rotV;
