@@ -1,6 +1,7 @@
 package Engine;
 
-import Object.Vector3D;
+import Object.*;
+import java.time.*;
 
 /**
  * @author Linden Brochu
@@ -10,11 +11,11 @@ public class Acceleration {
     private double linearAcceleration;
 
     /**
-     * Calcul une acceleration a partir de forces et de la masse d'un objet
+     * Calcul une acceleration a partir de forces (sans friction)  et de la masse d'un objet
      * @param mass Masse de l'objet
      * @param forces Forces a appliquer
      */
-    Acceleration(int mass, Force[] forces){
+    public Acceleration(int mass, Force[] forces){
         newtonVector = new Vector3D();
         for (Force direction : forces)
             newtonVector.add(direction.getDirection());
@@ -25,7 +26,21 @@ public class Acceleration {
                                                         Math.pow(newtonVector.getZ(), 2), (0.5));
     }
 
-
+    /**
+     * Calculer la vitesse a partir d'une quantite de temps et de l'acceleration
+     * @param temps Quantite de temps
+     * @return Velocity de la vitesse
+     */
+    public Velocity getVelocityWithTime(Duration temps){
+        Velocity vit = new Velocity();
+        vit.getVit().add(newtonVector);
+        vit.getVit().setX(vit.getVit().getX() * temps.getSeconds());
+        vit.getVit().setY(vit.getVit().getY() * temps.getSeconds());
+        vit.getVit().setZ(vit.getVit().getZ() * temps.getSeconds());
+        vit.setLinearVelocity(Math.pow(Math.pow(vit.getVit().getX(), 2) + Math.pow(vit.getVit().getY(), 2) +
+                Math.pow(vit.getVit().getZ(), 2), (0.5)));
+        return vit;
+    }
 
     public Vector3D getNewtonVector() {
         return newtonVector;
@@ -33,5 +48,13 @@ public class Acceleration {
 
     public void setNewtonVector(Vector3D newtonVector) {
         this.newtonVector = newtonVector;
+    }
+
+    public double getLinearAcceleration() {
+        return linearAcceleration;
+    }
+
+    public void setLinearAcceleration(double linearAcceleration) {
+        this.linearAcceleration = linearAcceleration;
     }
 }
