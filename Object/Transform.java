@@ -5,7 +5,7 @@ package Object;
  */
 public class Transform {
     private Position3D pos;
-    private double[] rotation = new double[3]; //Rotation
+    private Rotation rot;
 
     /**
      * Instancier position sur les 3 axes
@@ -27,9 +27,7 @@ public class Transform {
      */
     public Transform(double x, double y, double z, double rotH, double rotV){
         pos = new Position3D(x, y, z);
-        rotation[0] = rotH;
-        rotation[1] = rotV;
-        rotation[2] = 0;
+        rot = new Rotation(rotH, rotV);
     }
 
     /**
@@ -43,24 +41,22 @@ public class Transform {
      */
     public Transform(double x, double y, double z, double rotH, double rotV, double rotLocal){
         pos = new Position3D(x, y, z);
-        rotation[0] = rotH;
-        rotation[1] = rotV;
-        rotation[2] = rotLocal;
+        rot = new Rotation(rotH, rotV, rotLocal);
     }
 
     public Position3D getPos() {
         return pos;
     }
 
-    public double[] getRotation() {
-        return rotation;
-    }
-
     public void setPos(Position3D pos) {
         this.pos = pos;
     }
 
-    public void setRotation(double[] rotation) {
-        this.rotation = rotation;
+    public Rotation getRot() {
+        return rot;
+    }
+
+    public void setRot(Rotation rot) {
+        this.rot = rot;
     }
 }
