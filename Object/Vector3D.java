@@ -1,5 +1,7 @@
 package Object;
 
+import java.text.DecimalFormat;
+
 /**
  * @author Linden Brochu
  */
@@ -25,15 +27,6 @@ public class Vector3D {
         x = 0;
         y = 0;
         z = 0;
-    }
-
-    /**
-     * Creer un point (position3D)
-     * @param pos Position3D du point d'origine
-     * @return Position3D d'un point à une certain distance d'un autre point
-     */
-    public Position3D posFromPos(Position3D pos){
-        return new Position3D(pos, this);
     }
 
     /**
@@ -64,6 +57,15 @@ public class Vector3D {
         x /= mul;
         y /= mul;
         z /= mul;
+    }
+
+    public Vector3D cloneVector(){
+        return new Vector3D(this.x, this.y, this.y);
+    }
+
+    public void print(){
+        DecimalFormat df = new DecimalFormat("0.00");
+        System.out.println(df.format(x) + " " + df.format(y) + " " + df.format(z));
     }
 
     public double getX() {

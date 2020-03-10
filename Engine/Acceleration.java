@@ -14,6 +14,10 @@ public class Acceleration {
         newtonVector = new Vector3D();
     }
 
+    public Acceleration(double x, double y, double z){
+        newtonVector = new Vector3D(x, y, z);
+    }
+
     public Vector3D getNewtonVector() {
         return newtonVector;
     }

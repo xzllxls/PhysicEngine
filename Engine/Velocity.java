@@ -15,6 +15,11 @@ public class Velocity {
         linearVelocity = 0;
     }
 
+    public Velocity(double x, double y, double z){
+        vit = new Vector3D(x, y, z);
+        //set linearVelocity
+    }
+
     public Vector3D getVit() {
         return vit;
     }

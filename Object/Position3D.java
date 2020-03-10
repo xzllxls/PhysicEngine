@@ -1,10 +1,12 @@
 package Object;
 
+import java.text.DecimalFormat;
+
 /**
  * @author Linden Brochu
  */
 public class Position3D {
-    private double[] pos; //Position par rapport au monde
+    private double[] pos = {0, 0, 0}; //Position par rapport au monde
 
     /**
      * Instancier position sur les 3 axes
@@ -25,9 +27,10 @@ public class Position3D {
      * @param vector Vecteur a appliquer au point
      */
     public Position3D(Position3D point, Vector3D vector){
-        point.pos[0] += vector.getX();
-        point.pos[1] += vector.getY();
-        point.pos[2] += vector.getZ();
+        pos[0] = point.pos[0] + vector.getX();
+        pos[1] = point.pos[1] + vector.getY();
+        pos[2] = point.pos[2] + vector.getZ();
+
     }
 
     /**
@@ -41,6 +44,11 @@ public class Position3D {
         deplacement.setY(pos[1] - pos2.pos[1]);
         deplacement.setZ(pos[2] - pos2.pos[2]);
         return deplacement;
+    }
+
+    public void print(){
+        DecimalFormat df = new DecimalFormat("0.00");
+        System.out.println(df.format(pos[0]) + " " + df.format(pos[1]) + " " + df.format(pos[2]));
     }
 
     public double[] getPos() {
