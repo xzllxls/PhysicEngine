@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
  * @author Linden Brochu
  */
 public class Position3D {
-    private double[] pos = {0, 0, 0}; //Position par rapport au monde
+    private double posX, posY, posZ; //Position par rapport au monde
 
     /**
      * Instancier position sur les 3 axes
@@ -15,10 +15,9 @@ public class Position3D {
      * @param z Position axe z
      */
     public Position3D(double x, double y, double z){
-        pos = new double[3];
-        pos[0] = x;
-        pos[1] = y;
-        pos[2] = z;
+        posX = x;
+        posY = y;
+        posZ = z;
     }
 
     /**
@@ -27,9 +26,9 @@ public class Position3D {
      * @param vector Vecteur a appliquer au point
      */
     public Position3D(Position3D point, Vector3D vector){
-        pos[0] = point.pos[0] + vector.getX();
-        pos[1] = point.pos[1] + vector.getY();
-        pos[2] = point.pos[2] + vector.getZ();
+        posX = point.getPosX() + vector.getX();
+        posY = point.getPosY() + vector.getY();
+        posZ = point.getPosZ() + vector.getZ();
 
     }
 
@@ -40,9 +39,9 @@ public class Position3D {
      */
     public Vector3D distanceFromPos(Position3D pos2){
         Vector3D deplacement = new Vector3D();
-        deplacement.setX(pos[0] - pos2.pos[0]);
-        deplacement.setY(pos[1] - pos2.pos[1]);
-        deplacement.setZ(pos[2] - pos2.pos[2]);
+        deplacement.setX(posX - pos2.getPosX());
+        deplacement.setY(posX - pos2.getPosY());
+        deplacement.setZ(posX - pos2.getPosZ());
         return deplacement;
     }
 
@@ -51,14 +50,30 @@ public class Position3D {
      */
     public void print(){
         DecimalFormat df = new DecimalFormat("0.00");
-        System.out.println(df.format(pos[0]) + " " + df.format(pos[1]) + " " + df.format(pos[2]));
+        System.out.println(df.format(posX) + " " + df.format(posY) + " " + df.format(posZ));
     }
 
-    public double[] getPos() {
-        return pos;
+    public double getPosX() {
+        return posX;
     }
 
-    public void setPos(double[] pos) {
-        this.pos = pos;
+    public void setPosX(double posX) {
+        this.posX = posX;
+    }
+
+    public double getPosY() {
+        return posY;
+    }
+
+    public void setPosY(double posY) {
+        this.posY = posY;
+    }
+
+    public double getPosZ() {
+        return posZ;
+    }
+
+    public void setPosZ(double posZ) {
+        this.posZ = posZ;
     }
 }
