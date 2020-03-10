@@ -1,6 +1,5 @@
 package Engine;
 
-import Engine.*;
 import Object.*;
 
 import java.time.Duration;
@@ -82,11 +81,6 @@ public class PhysicsMath {
         accVector.addMultiplicator(time.getSeconds());
         newVel.getVit().add(accVector);
         return newVel;
-    }
-
-    public static Velocity calculVel(SceneObject object, Position3D finalPos){
-        //À completer
-        return new Velocity();
     }
 
     /**

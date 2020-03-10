@@ -46,6 +46,9 @@ public class Position3D {
         return deplacement;
     }
 
+    /**
+     * Affiche a la console les valeurs d'axe
+     */
     public void print(){
         DecimalFormat df = new DecimalFormat("0.00");
         System.out.println(df.format(pos[0]) + " " + df.format(pos[1]) + " " + df.format(pos[2]));

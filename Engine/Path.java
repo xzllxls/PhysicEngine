@@ -5,7 +5,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 /**
- * @author Linden
+ * @author Linden Brochu
  */
 public class Path {
     private ArrayList<PathPoint> pathPointArrayList = new ArrayList();
@@ -13,6 +13,11 @@ public class Path {
     private Position3D initPoint;
     private Position3D finalPoint;
 
+    /**
+     * Instancier un Path
+     * @param time Duree du trajet
+     * @param initialPos Position initiale
+     */
     public Path(Duration time, Position3D initialPos){
         this.time = time;
         this.initPoint = initialPos;

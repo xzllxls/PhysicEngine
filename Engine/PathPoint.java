@@ -11,16 +11,27 @@ public class PathPoint {
     private Position3D finalPoint;
     private Vector3D vector;
 
+    /**
+     * Instancier un PathPoint et creer le vecteur entre les deux
+     * @param initPoint Point initial
+     * @param finalPoint Point final
+     */
     public PathPoint(Position3D initPoint, Position3D finalPoint){
         this.initPoint = initPoint;
         this.finalPoint = finalPoint;
         vector = finalPoint.distanceFromPos(initPoint);
     }
 
+    /**
+     * Instancier un PathPoint vide
+     */
     public PathPoint(){
 
     }
 
+    /**
+     * Determine le point final
+     */
     public void knowFinalPoint(){
         finalPoint = new Position3D(initPoint, vector);
     }

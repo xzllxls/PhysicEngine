@@ -9,11 +9,19 @@ public class Acceleration {
     private Vector3D newtonVector;
     private double linearAcceleration;
 
-
+    /**
+     * Instancier une acceleration nulle
+     */
     public Acceleration(){
         newtonVector = new Vector3D();
     }
 
+    /**
+     * Instancier une acceleration
+     * @param x Acceleration sur l'axe x
+     * @param y Acceleration sur l'axe y
+     * @param z Acceleration sur l'axe z
+     */
     public Acceleration(double x, double y, double z){
         newtonVector = new Vector3D(x, y, z);
     }

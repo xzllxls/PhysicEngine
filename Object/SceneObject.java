@@ -6,10 +6,10 @@ import Engine.Velocity;
  * @author Linden Brochu
  */
 public class SceneObject {
-    int mass;
-    boolean isRigid;
-    Transform transform;
-    Velocity vitesse;
+    private int mass;
+    private boolean isRigid;
+    private Transform transform;
+    private Velocity vitesse;
 
 
 }

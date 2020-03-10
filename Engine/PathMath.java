@@ -8,6 +8,13 @@ import Object.Vector3D;
  * @author Linden Brochu
  */
 public class PathMath {
+
+    /**
+     * Creer un point sur un Path
+     * @param initialPos Position initiale du point
+     * @param vector3D Vecteur vers la position finale du point
+     * @return PathPoint
+     */
     public static PathPoint createPathPoint (Position3D initialPos, Vector3D vector3D){
         PathPoint point = new PathPoint();
         point.setInitPoint(initialPos);
@@ -16,6 +23,14 @@ public class PathMath {
         return point;
     }
 
+    /**
+     * Creer un Path
+     * @param time Duree du trajet
+     * @param initialPos Position initale de l'objet
+     * @param vel Velocite de l'objet
+     * @param acc Acceleration a appliquer a l'objet
+     * @return Path
+     */
     public static Path createPath(Duration time, Position3D initialPos, Velocity vel, Acceleration acc){
         Path path = new Path(time, initialPos);
         Velocity newVel = new Velocity();

@@ -59,10 +59,17 @@ public class Vector3D {
         z /= mul;
     }
 
+    /**
+     * Creer un vecteur identique au present vecteur
+     * @return Vector3D
+     */
     public Vector3D cloneVector(){
         return new Vector3D(this.x, this.y, this.y);
     }
 
+    /**
+     * Affiche a la console les valeurs d'axe
+     */
     public void print(){
         DecimalFormat df = new DecimalFormat("0.00");
         System.out.println(df.format(x) + " " + df.format(y) + " " + df.format(z));
