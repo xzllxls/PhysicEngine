@@ -11,8 +11,11 @@ import java.util.concurrent.TimeUnit;
 public class RunTimeApp {
     public static boolean endProgram = false;
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+
     public static void main(String[] args) {
-        //Start UI
+        //Start UI by new Thread ---> fonctionnement en parallele avec les updates
         update();
     }
 
@@ -29,7 +32,9 @@ public class RunTimeApp {
                 timeToWait = frameEnd - frameStart;
                 if (timeToWait < milisecondPerFrame)
                     TimeUnit.MILLISECONDS.sleep(milisecondPerFrame - timeToWait);
-                else System.out.println("Current \"fixed\" frame is to high for computer hardware");
+                else {
+                    System.out.println(ANSI_RED + "Current \"fixed\" frame is to high for computer hardware" + ANSI_RESET);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
