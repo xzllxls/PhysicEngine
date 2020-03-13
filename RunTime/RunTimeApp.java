@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Linden Brochu
  * Porte d'entree du programme
- * Modifier UI ici
  */
 public class RunTimeApp {
     public static boolean endProgram = false;
@@ -19,6 +18,10 @@ public class RunTimeApp {
         update();
     }
 
+    /**
+     * Permet d'executer du code un certain nombre de fois par seconde
+     * Presente une certaine instabilite, possibilite de crash soudain
+     */
     public static void update(){
         long frameStart;
         long frameEnd;

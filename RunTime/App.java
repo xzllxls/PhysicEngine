@@ -1,8 +1,9 @@
 package RunTime;
 
 public class App {
+
     /**
-     *
+     * Appeler plusieurs fois par seconde
      */
     public static void update(){
 
