@@ -3,6 +3,7 @@ package Engine;
 import java.time.Duration;
 import Object.Position3D;
 import Object.Vector3D;
+import Object.SceneObject;
 
 /**
  * @author Linden Brochu
@@ -24,7 +25,7 @@ public class PathMath {
     }
 
     /**
-     * Creer un Path
+     * Creer un Path pour un objet sans masse
      * @param time Duree du trajet
      * @param initialPos Position initale de l'objet
      * @param vel Velocite de l'objet
@@ -52,4 +53,8 @@ public class PathMath {
         }
         return path;
     }
+
+//    public static Path createPath(SceneObject object){
+//
+//    }
 }
