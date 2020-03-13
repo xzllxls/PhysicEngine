@@ -75,6 +75,13 @@ public class Vector3D {
         System.out.println(df.format(x) + " " + df.format(y) + " " + df.format(z));
     }
 
+    /**
+     * Inverse le vecteur
+     */
+    public void invertVector(){
+        this.addMultiplicator(-1);
+    }
+
     public double getX() {
         return x;
     }
