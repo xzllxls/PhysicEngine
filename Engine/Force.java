@@ -6,11 +6,6 @@ import Object.Vector3D;
  * @author Linden Brochu
  */
 public class Force {
-
-    enum typeForce {
-        Gravite, Friction, Propulsion
-    }
-
     private Vector3D direction;
 
     /**
