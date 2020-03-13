@@ -31,6 +31,7 @@ public class PhysicsMath {
         Acceleration acc = new Acceleration();
         acc.getNewtonVector().add(force.getDirection());
         acc.getNewtonVector().subMultiplicator(mass);
+        acc.updateLinearAcceleration();
         return acc;
     }
 
@@ -48,8 +49,7 @@ public class PhysicsMath {
         newtonVector.setX(newtonVector.getX() * mass);
         newtonVector.setY(newtonVector.getX() * mass);
         newtonVector.setZ(newtonVector.getX() * mass);
-        acc.setLinearAcceleration(Math.pow(Math.pow(newtonVector.getX(), 2) + Math.pow(newtonVector.getY(), 2) +
-                Math.pow(newtonVector.getZ(), 2), (0.5)));
+        acc.updateLinearAcceleration();
         return acc;
     }
 

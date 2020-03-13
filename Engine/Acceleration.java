@@ -24,6 +24,12 @@ public class Acceleration {
      */
     public Acceleration(double x, double y, double z){
         newtonVector = new Vector3D(x, y, z);
+        updateLinearAcceleration();
+    }
+
+    public void updateLinearAcceleration(){
+        linearAcceleration = Math.pow(Math.pow(newtonVector.getX(), 2) + Math.pow(newtonVector.getY(), 2) +
+                Math.pow(newtonVector.getZ(), 2), (0.5));
     }
 
     public Vector3D getNewtonVector() {
