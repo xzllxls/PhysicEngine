@@ -17,7 +17,7 @@ public class RunTimeApp {
     public static App app = new App();
 
     public static void main(String[] args) {
-        applicationFrame = new AppUi(300, 300);
+        applicationFrame = new AppUi(400, 400);
         applicationFrame.start();
         update();
     }
