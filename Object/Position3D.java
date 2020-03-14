@@ -1,12 +1,22 @@
 package Object;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 /**
  * @author Linden Brochu
  */
 public class Position3D {
     private double posX, posY, posZ; //Position par rapport au monde
+
+    /**
+     * Instancier position sur (0,0,0)
+     */
+    public Position3D(){
+        posX = 0;
+        posY = 0;
+        posZ = 0;
+    }
 
     /**
      * Instancier position sur les 3 axes
@@ -51,6 +61,42 @@ public class Position3D {
     public void print(){
         DecimalFormat df = new DecimalFormat("0.00");
         System.out.println(df.format(posX) + " " + df.format(posY) + " " + df.format(posZ));
+    }
+
+    /**
+     * Positionne l'objet sur une autre position
+     * @param position3D Autre position
+     */
+    public void cloneOtherPos(Position3D position3D){
+        posX = position3D.getPosX();
+        posY = position3D.getPosY();
+        posZ = position3D.getPosZ();
+    }
+
+    /**
+     * Creer une position a l'emplacement d'une autre position
+     * @param position3D Autre position
+     * @return Position3D clonee
+     */
+    public static Position3D clone(Position3D position3D){
+        Position3D pos = new Position3D();
+        pos.cloneOtherPos(position3D);
+        return pos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position3D that = (Position3D) o;
+        return Double.compare(that.posX, posX) == 0 &&
+                Double.compare(that.posY, posY) == 0 &&
+                Double.compare(that.posZ, posZ) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(posX, posY, posZ);
     }
 
     public double getPosX() {

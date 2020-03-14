@@ -14,6 +14,7 @@ public class RunTimeApp {
     public static final String ANSI_RED = "\u001B[31m";
 
     public static AppUi applicationFrame;
+    public static App app = new App();
 
     public static void main(String[] args) {
         applicationFrame = new AppUi(300, 300);
@@ -30,10 +31,11 @@ public class RunTimeApp {
         long frameEnd;
         long timeToWait;
         long milisecondPerFrame = 1000 / PhysicEngine.CONSTANT_FRAME;
+        app.startApp();
         while (!endProgram){
             try {
                 frameStart = System.currentTimeMillis();
-                App.update();
+                app.update();
                 frameEnd = System.currentTimeMillis();
                 timeToWait = frameEnd - frameStart;
                 if (timeToWait < milisecondPerFrame)

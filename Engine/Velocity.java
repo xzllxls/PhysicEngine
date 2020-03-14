@@ -18,6 +18,15 @@ public class Velocity {
     }
 
     /**
+     * Instancier une vitesse en copiant un vecteur
+     * @param vector Vecteur a copier
+     */
+    public Velocity(Vector3D vector){
+        vit = vector.cloneVector();
+        //set linearVelocity
+    }
+
+    /**
      * Instancier une vitesse
      * @param x Vitesse de l'axe x
      * @param y Vitesse de l'axe y

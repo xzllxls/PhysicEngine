@@ -51,10 +51,11 @@ public class PathMath {
                         newVel.getVit()));
             }
         }
+        path.setFinalPoint(path.getPathPointArrayList().get(path.getPathPointArrayList().size() - 1).getFinalPoint());
         return path;
     }
 
-//    public static Path createPath(SceneObject object){
+//    public static Path createPath(Duration time, SceneObject object ){
 //
 //    }
 }
