@@ -1,6 +1,7 @@
 package Object;
 
 import Engine.Velocity;
+import Rendered.RenderObject;
 import RunTime.App;
 
 /**
@@ -11,8 +12,10 @@ public class SceneObject {
     private boolean rigid;
     private Transform transform;
     private Velocity vitesse;
+    private RenderObject model;
 
     private PathListener pathListener = null;
+
     /**
      * Instancier un SceneObject
      * @param mass Masse de l'objet
@@ -27,8 +30,12 @@ public class SceneObject {
         else vitesse = null;
     }
 
+    /**
+     * Permet de suivre un path
+     */
     public void followSimplePath(){
         if (pathListener.getStep() == pathListener.getPath().getPathPointArrayList().size()){
+            //Debug, don't use this part
             if (pathListener.getPath().getFinalPoint().equals(transform.getPos()))
                 System.out.println("Destination atteinte");
             else System.out.println("Destination non atteinte");
@@ -78,5 +85,13 @@ public class SceneObject {
 
     public void setPathListener(PathListener pathListener) {
         this.pathListener = pathListener;
+    }
+
+    public RenderObject getModel() {
+        return model;
+    }
+
+    public void setModel(RenderObject model) {
+        this.model = model;
     }
 }
