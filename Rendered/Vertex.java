@@ -2,6 +2,8 @@ package Rendered;
 
 import Object.Position3D;
 
+import java.util.Objects;
+
 /**
  * @author Linden Brochu
  */
@@ -32,5 +34,18 @@ public class Vertex {
 
     public void setPos(Position3D pos) {
         this.pos = pos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vertex vertex = (Vertex) o;
+        return pos.equals(vertex.pos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pos);
     }
 }
