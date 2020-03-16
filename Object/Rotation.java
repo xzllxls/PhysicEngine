@@ -37,6 +37,26 @@ public class Rotation {
         System.out.println(df.format(rotX) + " " + df.format(rotY) + " " + df.format(rotZ));
     }
 
+    /**
+     * Copie la valeur d'une rotation
+     * @param rotation Rotation a copier
+     */
+    public void cloneOtherRot(Rotation rotation){
+        rotX = rotation.getRotX();
+        rotY = rotation.getRotY();
+        rotZ = rotation.getRotZ();
+    }
+
+    /**
+     * Instancier un rotation avec les memes valeurs qu'une autre rotation
+     * @param rotation Autre rotation
+     * @return Rotation
+     */
+    public static Rotation clone(Rotation rotation){
+        Rotation newRot = new Rotation();
+        newRot.cloneOtherRot(rotation);
+        return newRot;
+    }
 
     public double getRotX() {
         return rotX;

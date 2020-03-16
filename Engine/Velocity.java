@@ -23,7 +23,7 @@ public class Velocity {
      */
     public Velocity(Vector3D vector){
         vit = vector.cloneVector();
-        //set linearVelocity
+        updateLinearVelocity();
     }
 
     /**
@@ -34,7 +34,7 @@ public class Velocity {
      */
     public Velocity(double x, double y, double z){
         vit = new Vector3D(x, y, z);
-        //set linearVelocity
+        updateLinearVelocity();
     }
 
     /**
