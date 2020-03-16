@@ -34,15 +34,12 @@ public class PathMath {
      */
     public static Path createPath(Duration time, Position3D initialPos, Velocity vel, Acceleration acc){
         Path path = new Path(time, initialPos);
-        Velocity newVel = new Velocity();
-        Acceleration newAcc = new Acceleration();
-        newVel.setVit(vel.getVit().cloneVector());
+        Velocity newVel = new Velocity(vel.getVit());
         newVel.getVit().subMultiplicator(PhysicEngine.CONSTANT_FRAME);
-        newAcc.setNewtonVector(acc.getNewtonVector().cloneVector());
-        newAcc.getNewtonVector().subMultiplicator(PhysicEngine.CONSTANT_FRAME);
+        acc.getNewtonVector().subMultiplicator(PhysicEngine.CONSTANT_FRAME);
 
         for (int i = 0; i < time.getSeconds() * PhysicEngine.CONSTANT_FRAME; i++){
-            newVel.getVit().add(newAcc.getNewtonVector());
+            newVel.getVit().add(acc.getNewtonVector());
             if (i == 0){
                 path.getPathPointArrayList().add(createPathPoint(initialPos, newVel.getVit()));
             }
@@ -55,7 +52,30 @@ public class PathMath {
         return path;
     }
 
-//    public static Path createPath(Duration time, SceneObject object ){
-//
-//    }
+    /**
+     * Creer un Path pour un objet avec une masse
+     * @param time Duree du trajet
+     * @param object Objet
+     * @param forces Forces a appliquer
+     * @return Path
+     */
+    public static Path createPath(Duration time, SceneObject object, Force[] forces){
+        Path path = new Path(time, Position3D.clone(object.getTransform().getPos()));
+        Velocity newVel = new Velocity(object.getVitesse().getVit());
+        newVel.getVit().subMultiplicator(PhysicEngine.CONSTANT_FRAME);
+        Acceleration acc = PhysicsMath.calculAcc(object.getMass(), forces);
+
+        for (int i = 0; i < time.getSeconds() * PhysicEngine.CONSTANT_FRAME; i++){
+            newVel.getVit().add(acc.getNewtonVector());
+            if (i == 0){
+                path.getPathPointArrayList().add(createPathPoint(path.getInitPoint(), newVel.getVit()));
+            }
+            else{
+                path.getPathPointArrayList().add(createPathPoint(path.getPathPointArrayList().get(i - 1).getFinalPoint(),
+                        newVel.getVit()));
+            }
+        }
+        path.setFinalPoint(path.getPathPointArrayList().get(path.getPathPointArrayList().size() - 1).getFinalPoint());
+        return path;
+    }
 }
