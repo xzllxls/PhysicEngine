@@ -1,19 +1,18 @@
 package RunTime;
 
 import Object.SceneObject;
-import Rendered.RenderObject;
+
 
 /**
  * @author Linden Brochu
  */
 public class App {
-    SceneObject object;
 
     /**
      * Appeler au demarage
      */
     public void startApp(){
-        object = new SceneObject(10, false);
+        
     }
 
     /**
