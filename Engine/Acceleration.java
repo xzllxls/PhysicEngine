@@ -27,6 +27,9 @@ public class Acceleration {
         updateLinearAcceleration();
     }
 
+    /**
+     * Met a jour l'acceleration lineaire
+     */
     public void updateLinearAcceleration(){
         linearAcceleration = Math.pow(Math.pow(newtonVector.getX(), 2) + Math.pow(newtonVector.getY(), 2) +
                 Math.pow(newtonVector.getZ(), 2), (0.5));

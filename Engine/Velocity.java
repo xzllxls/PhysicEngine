@@ -37,6 +37,14 @@ public class Velocity {
         //set linearVelocity
     }
 
+    /**
+     * Met a jour la velocite lineaire
+     */
+    public void updateLinearVelocity(){
+        linearVelocity = Math.pow(Math.pow(vit.getX(), 2) + Math.pow(vit.getY(), 2) +
+                Math.pow(vit.getZ(), 2), (0.5));
+    }
+
     public Vector3D getVit() {
         return vit;
     }
