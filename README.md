@@ -25,14 +25,19 @@ The rest of this file is writen in english
 ## Repository
 ### RunTime
 * Contain every script required for running the application
+
 ### Rendered
 * Contain every script required to do / to load an 3d object
+
 ### Object
 * Contain every script required to create a virtual object
+
 ### Engine
 * Contain every script required to manage the physics
+
 ## Usage
 ### As library
 * If you want to integrate physic in your project or if you want to do your own application
+
 ### As application
 * If you want to develop a simulation modal
