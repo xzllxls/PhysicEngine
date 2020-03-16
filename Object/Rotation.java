@@ -6,29 +6,27 @@ import java.text.DecimalFormat;
  * @author Linden Brochu
  */
 public class Rotation {
-    private double rotH, rotV, rotLocal; //Rotation
+    private double rotX, rotY, rotZ;
 
     /**
-     * Instancier une rotation
-     * @param rotH Rotation horizontale 0°-360°
-     * @param rotV Rotation verticale -90°-90°
+     * Instancier un rotation nulle
      */
-    public Rotation(double rotH, double rotV){
-        this.rotV = rotV;
-        this.rotH = rotH;
-        rotLocal = 0;
+    public Rotation(){
+        rotX = 0;
+        rotY = 0;
+        rotZ = 0;
     }
 
     /**
      * Instancier une rotation
-     * @param rotH Rotation horizontale 0°-360°
-     * @param rotV Rotation vectricale -90°-90°
-     * @param rotLocal Rotation sur l'axe local/radiale aux 2 autres axes 0°-360°
+     * @param rotX Rotation axe x
+     * @param rotY Rotation axe y
+     * @param rotZ Rotation axe z
      */
-    public Rotation(double rotH, double rotV, double rotLocal){
-        this.rotV = rotV;
-        this.rotH = rotH;
-        this.rotLocal = rotLocal;
+    public Rotation(double rotX, double rotY, double rotZ){
+        this.rotX = rotX;
+        this.rotY = rotY;
+        this.rotZ = rotZ;
     }
 
     /**
@@ -36,30 +34,31 @@ public class Rotation {
      */
     public void print(){
         DecimalFormat df = new DecimalFormat("0.00");
-        System.out.println(df.format(rotH) + " " + df.format(rotV) + " " + df.format(rotLocal));
+        System.out.println(df.format(rotX) + " " + df.format(rotY) + " " + df.format(rotZ));
     }
 
-    public double getRotH() {
-        return rotH;
+
+    public double getRotX() {
+        return rotX;
     }
 
-    public void setRotH(double rotH) {
-        this.rotH = rotH;
+    public void setRotX(double rotX) {
+        this.rotX = rotX;
     }
 
-    public double getRotV() {
-        return rotV;
+    public double getRotY() {
+        return rotY;
     }
 
-    public void setRotV(double rotV) {
-        this.rotV = rotV;
+    public void setRotY(double rotY) {
+        this.rotY = rotY;
     }
 
-    public double getRotLocal() {
-        return rotLocal;
+    public double getRotZ() {
+        return rotZ;
     }
 
-    public void setRotLocal(double rotLocal) {
-        this.rotLocal = rotLocal;
+    public void setRotZ(double rotZ) {
+        this.rotZ = rotZ;
     }
 }
