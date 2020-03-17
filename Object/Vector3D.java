@@ -82,6 +82,17 @@ public class Vector3D {
         this.addMultiplicator(-1);
     }
 
+    /**
+     * Creer un vecteur inverse a un autre vecteur
+     * @param vector Vecteur a cloner
+     * @return Vector3D
+     */
+    public static Vector3D invertAndCloneVector(Vector3D vector){
+        Vector3D clone = vector.cloneVector();
+        clone.invertVector();
+        return clone;
+    }
+
     public double getX() {
         return x;
     }
