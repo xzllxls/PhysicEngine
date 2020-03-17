@@ -41,3 +41,26 @@ The rest of this file is writen in english
 
 ### As application
 * If you want to develop a simulation modal
+
+## Specifics scripts
+* RunTime/App
+    * Operate update at Engine/PhysicEngine.CONSTANT_FRAME per second
+* RunTime/AppConf
+    * Contain all data that application need to work
+* RunTime/RunTimeApp
+    * Contain the update mechanic
+    * Entry point of the application
+* RunTime/UI
+    * Contain the UI
+* Engine/PhysicEngine
+    * Contain all data for physic simulation
+* Engine/PhysicsMath
+    * Contain many method to instantiate Engine's and Object's scripts
+* Engine/PathMath
+    * Contain many method to calculate Path
+* Rendered/RenderObject
+    * Object that we can see
+* Object/SceneObject
+    * Object that contain data and that we operate physic
+* Object/Vector3D
+    * Base script to describe a 3d line
