@@ -1,6 +1,8 @@
 package RunTime;
 
 import Engine.PhysicEngine;
+import javafx.application.Application;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,11 +15,10 @@ public class RunTimeApp {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
 
-    public static AppUi applicationFrame;
     public static App app = new App();
 
     public static void main(String[] args) {
-        applicationFrame = new AppUi(AppConf.width, AppConf.heigth);
+        Application.launch(UI.class, args);
         update();
     }
 
