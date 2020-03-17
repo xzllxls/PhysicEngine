@@ -1,19 +1,24 @@
 package RunTime;
 
-import javax.swing.*;
-import java.awt.*;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-/**
- * @author Linden Brochu
- */
-public class UI {
-    public JFrame frame;
+import java.io.IOException;
 
-    public UI(int width, int height){
-        frame = new JFrame(AppConf.title);
-        frame.setSize(width, height);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //Set UI component
-        frame.setVisible(true);
+public class UI extends Application {
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        Text text = new Text(10, 40, "Hello");
+
+        Scene scene = new Scene(new Group(text), AppConf.width, AppConf.height);
+
+        primaryStage.setTitle(AppConf.title);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        App.appQuit();
     }
+
 }
