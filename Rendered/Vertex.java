@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public class Vertex {
     private Position3D pos;
-
+    private String posName;
     /**
      * Instancier un vertex
      * @param x Position sur l'axe x
@@ -47,5 +47,13 @@ public class Vertex {
     @Override
     public int hashCode() {
         return Objects.hash(pos);
+    }
+
+    public String getPosName() {
+        return posName;
+    }
+
+    public void setPosName(String posName) {
+        this.posName = posName;
     }
 }

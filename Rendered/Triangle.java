@@ -11,6 +11,7 @@ public class Triangle {
     private Vertex vertex2;
     private Vertex vertex3;
     private Color color;
+    private String posName;
 
     /**
      * Instancier un triangle
@@ -57,5 +58,13 @@ public class Triangle {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public String getPosName() {
+        return posName;
+    }
+
+    public void setPosName(String posName) {
+        this.posName = posName;
     }
 }
