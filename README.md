@@ -29,6 +29,9 @@ The rest of this file is writen in english
 ### Rendered
 * Contain every script required to do / to load an 3d object
 
+#### RenderFile
+* Must contain all 3d .rend file
+
 ### Object
 * Contain every script required to create a virtual object
 
