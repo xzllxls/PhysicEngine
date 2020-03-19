@@ -67,18 +67,18 @@ The rest of this file is writen in english
 
 ## 3D File format
 * The extension name is .rend (for render)
-* To end a data section : "|data_end|"
+* To end a data section : "\|data_end\|"
 * Position of all vertex
-    * Ex : "[P{n=p1,x=10,y=10,z=10},P{n=p2,x=30,y=30,z=30},(...)]|data_end|"
+    * Ex : "[P{n=p1,x=10,y=10,z=10},P{n=p2,x=30,y=30,z=30},(...)]"
     * The vertex must be at the begging of the file
     * The x, y and z value are the value from the object center point
     * This data section must start with "Vertices" before the "[]"
 * All geometric form
-    * Ex : "[T{n=t1,p={p1,p2,p3},c=COLOR_CODE},T{...}]|data_end|"
+    * Ex : "[T{n=t1,p={p1,p2,p3},c=COLOR_CODE},T{...}]"
     * In the p section, specified the 3 vertices names you give
     * The c section is for a color, replace "COLOR_CODE" by the color code you want to
     * This data section must start with "Tris" before the "[]"
 * Other specification
-    * All data section must have an "|data_section|" before the section
+    * All data section must have an "\|data_section\|" before the section
     * All data name, like "n=p1" must start with the section name, like P, in minus char and the number of item<br>
     Ex : first will be p1, second p2, third p3, ... you get it
