@@ -66,8 +66,6 @@ The rest of this file is writen in english
     * Base script to describe a 3d line
 
 ## 3D File format
-* The extension name is .rend (for render)
-* To end a data section : "\|data_end\|"
 * Position of all vertex
     * Ex : "[P{n=p1,x=10,y=10,z=10},P{n=p2,x=30,y=30,z=30},(...)]"
     * The vertex must be at the begging of the file
@@ -82,3 +80,5 @@ The rest of this file is writen in english
     * All data section must have an "\|data_section\|" before the section
     * All data name, like "n=p1" must start with the section name, like P, in minus char and the number of item<br>
     Ex : first will be p1, second p2, third p3, ... you get it
+    * The extension name is .rend (for render)
+    * To end a data section : "\|data_end\|"
