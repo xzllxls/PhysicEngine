@@ -45,28 +45,27 @@ public class RenderObject {
      * @param tList Liste de Triangle
      */
     private void convertFileToJava(String vList, String tList){
-        Pattern p = Pattern.compile("P\\{n=p[0-9]+,x=-?[0-9],y=-?[0-9],z=-?[0-9]}");
+        Pattern p = Pattern.compile("P\\{n=p[0-9]+,x=-?[0-9]+,y=-?[0-9]+,z=-?[0-9]+}");
         Matcher m = p.matcher(vList);
         while (m.find()){
-            Pattern x = Pattern.compile("x=(-?[0-9])");
-            Pattern y = Pattern.compile("y=(-?[0-9])");
-            Pattern z = Pattern.compile("z=(-?[0-9])");
-            Matcher m1 = x.matcher(m.group());
-            Matcher m2 = y.matcher(m.group());
-            Matcher m3 = z.matcher(m.group());
-            Vertex vert = new Vertex(Double.parseDouble(m1.group()), Double.parseDouble(m2.group()), Double.parseDouble(m3.group()));
+            Pattern p1 = Pattern.compile("x=(-?[0-9]+),y=(-?[0-9]+),z=(-?[0-9]+)");
+            Matcher m1 = p1.matcher(m.group());
+            m1.find();
+            Vertex vert = new Vertex(Double.parseDouble(m1.group(1)), Double.parseDouble(m1.group(2)), Double.parseDouble(m1.group(3)));
             vertices.add(vert);
         }
-        p = Pattern.compile("T\\{n=t[0-9]+,p=\\{p[0-9]+,p[0-9]+,p[0-9]+},c=[0-9]{6}}");
+        p = Pattern.compile("T\\{n=t[0-9]+,p=\\{p[0-9]+,p[0-9]+,p[0-9]+},c=#([0-9]+)#([0-9]+)#([0-9]+)}");
         m = p.matcher(tList);
         while (m.find()){
-            Pattern p1 = Pattern.compile("p([0-9]+),p([0-9]+),p([0-9]+)");
+            Pattern p1 = Pattern.compile("\\{p([0-9]+),p([0-9]+),p([0-9]+)}");
             Pattern p2 = Pattern.compile("c=#([0-9]+)#([0-9]+)#([0-9]+)");
-            Matcher m1 = p1.matcher(tList);
-            Matcher m2 = p2.matcher(tList);
-            Triangle tri = new Triangle(vertices.get(Integer.parseInt(m1.group(0))), vertices.get(Integer.parseInt(m1.group(1))),
-                    vertices.get(Integer.parseInt(m1.group(2))),
-            new Color(Integer.parseInt(m2.group(0), Integer.parseInt(m2.group(1), Integer.parseInt(m2.group(2))))));
+            Matcher m1 = p1.matcher(m.group());
+            Matcher m2 = p2.matcher(m.group());
+            m1.find();
+            m2.find();
+            Triangle tri = new Triangle(vertices.get(Integer.parseInt(m1.group(1)) - 1), vertices.get(Integer.parseInt(m1.group(2)) - 1),
+                    vertices.get(Integer.parseInt(m1.group(3)) - 1),
+            new Color(Integer.parseInt(m2.group(1)), Integer.parseInt(m2.group(2)), Integer.parseInt(m2.group(3))));
             tris.add(tri);
         }
     }
@@ -79,8 +78,8 @@ public class RenderObject {
         File myObj;
         try {
             if (System.getProperty("sun.desktop").contains("windows"))
-                myObj = new File(".\\RenderFile\\" + filename + ".rend");
-            else myObj = new File("./RenderFile/" + filename + ".rend");
+                myObj = new File("C:\\Users\\Admin\\IdeaProjects\\PhysicAndIA\\src\\Rendered\\RenderFile\\" + filename + ".rend");
+            else myObj = new File("/RenderFile/" + filename + ".rend");
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
                 convertJavaToFile(myObj);
@@ -101,7 +100,7 @@ public class RenderObject {
         FileWriter myWriter;
         try {
             if(System.getProperty("sun.desktop").contains("windows"))
-                myWriter = new FileWriter(".\\RenderFile\\" + file.getName());
+                myWriter = new FileWriter("C:\\Users\\Admin\\IdeaProjects\\PhysicAndIA\\src\\Rendered\\RenderFile\\" + file.getName());
             else myWriter = new FileWriter("./RenderFile/" + file.getName());
             String verticesString = "|data_section|[";
             String trisString = "|data_section|[";
