@@ -12,7 +12,6 @@ public class SceneObject {
     private boolean rigid;
     private Transform transform;
     private Velocity vitesse;
-    private RenderObject model;
 
     private PathListener pathListener = null;
 
@@ -85,13 +84,5 @@ public class SceneObject {
 
     public void setPathListener(PathListener pathListener) {
         this.pathListener = pathListener;
-    }
-
-    public RenderObject getModel() {
-        return model;
-    }
-
-    public void setModel(RenderObject model) {
-        this.model = model;
     }
 }
