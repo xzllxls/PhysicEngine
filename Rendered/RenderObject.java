@@ -78,8 +78,9 @@ public class RenderObject {
         File myObj;
         try {
             if (System.getProperty("sun.desktop").contains("windows"))
-                myObj = new File("C:\\Users\\Admin\\IdeaProjects\\PhysicAndIA\\src\\Rendered\\RenderFile\\" + filename + ".rend");
-            else myObj = new File("/RenderFile/" + filename + ".rend");
+                myObj = new File("src\\Rendered\\RenderFile\\" + filename + ".rend");
+            else myObj = new File("src/Rendered/RenderFile/" + filename + ".rend");
+
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
                 convertJavaToFile(myObj);
@@ -100,8 +101,8 @@ public class RenderObject {
         FileWriter myWriter;
         try {
             if(System.getProperty("sun.desktop").contains("windows"))
-                myWriter = new FileWriter("C:\\Users\\Admin\\IdeaProjects\\PhysicAndIA\\src\\Rendered\\RenderFile\\" + file.getName());
-            else myWriter = new FileWriter("./RenderFile/" + file.getName());
+                myWriter = new FileWriter( "src\\Rendered\\RenderFile\\" + file.getName());
+            else myWriter = new FileWriter("src/Rendered/RenderFile/" + file.getName());
             String verticesString = "|data_section|[";
             String trisString = "|data_section|[";
             setPosName();
