@@ -1,6 +1,7 @@
 package Rendered;
 
 import RunTime.RunTimeApp;
+import Object.SceneObject;
 
 import java.awt.*;
 import java.io.File;
@@ -16,9 +17,10 @@ import java.util.regex.Pattern;
  * @author Linden Brochu
  * Sera compatible avec les fichiers
  */
-public class RenderObject {
+public class RenderObject{
     private ArrayList<Triangle> tris = new ArrayList<>();
     private ArrayList<Vertex> vertices = new ArrayList<>();
+
 
     /**
      * Instancier un RenderObject a partir d'un fichier
