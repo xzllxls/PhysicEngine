@@ -77,7 +77,7 @@ The rest of this file is writen in english
 * All geometric form
     * Ex : "[T{n=t1,p={p1,p2,p3},c=COLOR_CODE},T{...}]"
     * In the p section, specified the 3 vertices names you give
-    * The c section is for a color, replace "COLOR_CODE" by the color code you want to
+    * The c section is for a color, replace "COLOR_CODE" by the color code you want to --> #rr#gg#bb
     * This data section must start with "Tris" before the "[]"
 * Other specification
     * All data section must have an "\|data_section\|" before the section
