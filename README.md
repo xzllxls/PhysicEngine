@@ -22,6 +22,12 @@ implement to allow junior programmers in this domain field to get a base.
 
 The rest of this file is writen in english
 
+## Development tool
+* IntelliJ
+* SDK 14
+* Imported lib :
+    * JavaFX sdk 14
+    
 ## Repository
 ### RunTime
 * Contain every script required for running the application
