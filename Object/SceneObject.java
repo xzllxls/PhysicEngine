@@ -15,6 +15,8 @@ public class SceneObject {
 
     private PathListener pathListener = null;
 
+    private RenderObject model;
+
     /**
      * Instancier un SceneObject
      * @param mass Masse de l'objet
@@ -27,6 +29,7 @@ public class SceneObject {
         if (!rigid)
             vitesse = new Velocity();
         else vitesse = null;
+        App.sceneObjects.add(this);
     }
 
     /**

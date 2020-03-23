@@ -1,7 +1,8 @@
 package Rendered;
 
 import RunTime.RunTimeApp;
-import Object.SceneObject;
+import Object.Vector3D;
+import RunTime.Viewport;
 
 import java.awt.*;
 import java.io.File;
@@ -15,20 +16,20 @@ import java.util.regex.Pattern;
 
 /**
  * @author Linden Brochu
- * Sera compatible avec les fichiers
  */
 public class RenderObject{
     private ArrayList<Triangle> tris = new ArrayList<>();
     private ArrayList<Vertex> vertices = new ArrayList<>();
-
+    private Vector3D pivot;
 
     /**
      * Instancier un RenderObject a partir d'un fichier
-     * @param file Fichier a lire
+     * @param filename Nom du fichier
      */
-    public RenderObject(File file){
+    public RenderObject(String filename){
         String vertexList;
         String trisList;
+        File file = new File("src\\Rendered\\RenderFile\\" + filename);
         try {
             Scanner myReader = new Scanner(file);
             vertexList = myReader.nextLine();
@@ -39,6 +40,7 @@ public class RenderObject{
             System.out.println(RunTimeApp.ANSI_RED + "An error occurred." + RunTimeApp.ANSI_RESET);
             e.printStackTrace();
         }
+        Viewport.renderObjects.add(this);
     }
 
     /**
@@ -79,7 +81,7 @@ public class RenderObject{
     public void createFile(String filename){
         File myObj;
         try {
-            if (System.getProperty("sun.desktop").contains("windows"))
+            if (System.getProperty("os.name").contains("Windows"))
                 myObj = new File("src\\Rendered\\RenderFile\\" + filename + ".rend");
             else myObj = new File("src/Rendered/RenderFile/" + filename + ".rend");
 
@@ -102,7 +104,7 @@ public class RenderObject{
     private void convertJavaToFile(File file){
         FileWriter myWriter;
         try {
-            if(System.getProperty("sun.desktop").contains("windows"))
+            if(System.getProperty("os.name").contains("Windows"))
                 myWriter = new FileWriter( "src\\Rendered\\RenderFile\\" + file.getName());
             else myWriter = new FileWriter("src/Rendered/RenderFile/" + file.getName());
             String verticesString = "|data_section|[";
@@ -150,5 +152,13 @@ public class RenderObject{
 
     public ArrayList<Vertex> getVertices() {
         return vertices;
+    }
+
+    public Vector3D getPivot() {
+        return pivot;
+    }
+
+    public void setPivot(Vector3D pivot) {
+        this.pivot = pivot;
     }
 }
