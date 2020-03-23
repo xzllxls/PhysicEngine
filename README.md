@@ -20,13 +20,11 @@ time, this is a 3 dimensions simulator, but when this part is completed, an exte
 The goal of the simulator will be to integrate AIs in a complex physic environment. Some basic IA brain will be 
 implement to allow junior programmers in this domain field to get a base.
 
-The rest of this file is writen in english
+The rest of this file is write in english
 
 ## Development tool
 * IntelliJ
 * SDK 14
-* Imported lib :
-    * JavaFX sdk 14
     
 ## Repository
 ### RunTime
@@ -91,3 +89,51 @@ The rest of this file is writen in english
     Ex : first will be p1, second p2, third p3, ... you get it
     * The extension name is .rend (for render)
     * To end a data section : "\|data_end\|"
+
+## UI file format
+* Must start with <root>
+* The extension name is .gui (for graphic user interface)
+* Interactive and "final" component must not have child
+* Each component need to have 2 2d pos, one for the top left and one for the bottom right corner
+* Here is each component you can put and their definition
+    * Non interactive component
+        * Panel --> simple panel
+        * TabPane --> simple tabbed pane
+    * Interactive and "final" component
+        * RenderPane --> the rendering zone if you want one (1 max)
+        * TextField --> simple editable text
+        * TextArea --> big editable text
+        * Text --> simple non editable text
+        * Button --> simple button
+        * CheckBox --> simple check box
+        * RadioButton --> simple radio button
+        * ToggleButton --> simple toggle button
+        * ColorPicker --> simple color chooser
+        * ComboBox --> simple combo box
+        * List --> simple list
+        * ProgressionBar --> simple progression bar
+        * Slider --> simple slider
+* You can put dialog window with code
+* You can put file chooser with code
+* All attribute
+    * backgroundColor="" --> default background color is Color.WHITE except for RenderPane (not implement yet)
+    * size="##:##:##:##" --> the size of the component (top left corner x, bottom right corner x, top left corner y, bottom right corner y)
+    * size="MAX" --> inherit the size of it's parent
+    * borderColor="" --> default border color is Color.BLACK (not implement yet)
+* Specific non attribute
+    * Button, CheckBox, RadioButton, ToggleButton, TextField, TextArea, Text
+        * text="" --> The component text (whitespace is _)
+    * RadioButton, ToggleButton
+        * selectGroup="" --> the GroupComponent (not implement yet)
+    * RadioButton, ToggleButton, CheckBox
+        * defaultSelect="" (true or false) --> The initial selection value
+        * If multiple RadioButton or ToggleButton are selected in a GroupComponent, they will be selected when the application start
+    * ProgressionBar, Slider
+        * minValue=""
+        * maxValue=""
+        * value=""
+    * ColorPicker
+        * defaultColor="" --> default color is Color.RED (not implement yet)
+    * TextField, TextArea, Text
+        * Every marker must start and end at same line
+* Root don't take any attribute
