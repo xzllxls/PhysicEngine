@@ -16,18 +16,10 @@ public class RunTimeApp {
     public static final String ANSI_RED = "\u001B[31m";
 
     public static App app = new App();
-    public static ViewPort viewPort = new ViewPort();
+    public static Viewport viewPort = new Viewport();
 
-    public static void main(String[] args) throws InterruptedException {
-
-        if (AppConf.hasUI && !AppConf.hasViewPort)
-            Application.launch(UI.class, args);
-        else if (AppConf.hasViewPort && !AppConf.hasUI)
-            new Thread(viewPort).start();
-        else {
-            Application.launch(UI.class, args);
-            new Thread(viewPort).start();
-        }
+    public static void main(String[] args) {
+        new Thread(viewPort).start();
         update();
     }
 

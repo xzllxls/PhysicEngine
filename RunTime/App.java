@@ -1,13 +1,13 @@
 package RunTime;
 
-
-
+import Object.SceneObject;
+import java.util.ArrayList;
 
 /**
  * @author Linden Brochu
  */
 public class App {
-
+    public static ArrayList<SceneObject> sceneObjects = new ArrayList<SceneObject>();
     /**
      * Appeler au demarage
      */
