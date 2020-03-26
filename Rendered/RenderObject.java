@@ -1,7 +1,7 @@
 package Rendered;
 
 import RunTime.RunTimeApp;
-import Object.Vector3D;
+import Objects.Position3D;
 import RunTime.Viewport;
 
 import java.awt.*;
@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public class RenderObject{
     private ArrayList<Triangle> tris = new ArrayList<>();
     private ArrayList<Vertex> vertices = new ArrayList<>();
-    private Vector3D pivot;
+    private Position3D pivot;
 
     /**
      * Instancier un RenderObject a partir d'un fichier
@@ -154,11 +154,11 @@ public class RenderObject{
         return vertices;
     }
 
-    public Vector3D getPivot() {
+    public Position3D getPivot() {
         return pivot;
     }
 
-    public void setPivot(Vector3D pivot) {
+    public void setPivot(Position3D pivot) {
         this.pivot = pivot;
     }
 }

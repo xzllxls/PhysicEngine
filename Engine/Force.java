@@ -1,6 +1,6 @@
 package Engine;
 
-import Object.Vector3D;
+import Objects.Vector3D;
 
 /**
  * @author Linden Brochu

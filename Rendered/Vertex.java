@@ -1,6 +1,6 @@
 package Rendered;
 
-import Object.Position3D;
+import Objects.Position3D;
 
 import java.util.Objects;
 

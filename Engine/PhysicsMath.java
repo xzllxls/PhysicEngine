@@ -1,6 +1,6 @@
 package Engine;
 
-import Object.*;
+import Objects.*;
 
 import java.time.Duration;
 

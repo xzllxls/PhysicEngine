@@ -1,6 +1,6 @@
 package Engine;
 
-import Object.Position3D;
+import Objects.Position3D;
 import java.time.Duration;
 import java.util.ArrayList;
 

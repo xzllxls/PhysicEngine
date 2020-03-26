@@ -1,9 +1,9 @@
 package Engine;
 
 import java.time.Duration;
-import Object.Position3D;
-import Object.Vector3D;
-import Object.SceneObject;
+import Objects.Position3D;
+import Objects.Vector3D;
+import Objects.SceneObject;
 
 /**
  * @author Linden Brochu

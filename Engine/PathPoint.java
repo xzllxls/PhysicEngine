@@ -1,7 +1,7 @@
 package Engine;
 
-import Object.Vector3D;
-import Object.Position3D;
+import Objects.Vector3D;
+import Objects.Position3D;
 
 /**
  * @author Linden Brochu

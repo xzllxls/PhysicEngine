@@ -1,4 +1,4 @@
-package Object;
+package Objects;
 
 import Engine.Path;
 
