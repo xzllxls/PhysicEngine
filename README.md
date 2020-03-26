@@ -25,6 +25,8 @@ The rest of this file is write in english
 ## Development tool
 * IntelliJ
 * SDK 14
+* OpenGL
+* JOGL
     
 ## Repository
 ### RunTime
@@ -120,6 +122,7 @@ The rest of this file is write in english
     * size="##:##:##:##" --> the size of the component (top left corner x, bottom right corner x, top left corner y, bottom right corner y)
     * size="MAX" --> inherit the size of it's parent
     * borderColor="" --> default border color is Color.BLACK (not implement yet)
+    * componentID="" --> set the id in controller
 * Specific non attribute
     * Button, CheckBox, RadioButton, ToggleButton, TextField, TextArea, Text
         * text="" --> The component text (whitespace is _)
@@ -128,6 +131,8 @@ The rest of this file is write in english
     * RadioButton, ToggleButton, CheckBox
         * defaultSelect="" (true or false) --> The initial selection value
         * If multiple RadioButton or ToggleButton are selected in a GroupComponent, they will be selected when the application start
+    * RadioButton, ToggleButton, CheckBox, Button
+        * action="" --> set the ActionListener on the action attribute content
     * ProgressionBar, Slider
         * minValue=""
         * maxValue=""
