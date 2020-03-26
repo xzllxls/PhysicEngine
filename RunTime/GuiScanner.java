@@ -1,6 +1,8 @@
 package RunTime;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -267,20 +269,33 @@ public class GuiScanner {
                     break;
                 case action:
                     if (component instanceof AbstractButton) {
-                        ((AbstractButton) component).addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                Class<?> c = app.controller.getClass();
+                        ((AbstractButton) component).addActionListener(e -> {
+                            Class<?> c = app.controller.getClass();
+                            try {
+                                Class<?>[] argTypes = new Class[] { ActionEvent.class };
+                                Method method = c.getDeclaredMethod(m.group(2), argTypes);
+                                method.invoke(app.controller, e);
+                            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
                                 try {
-                                    Class<?>[] argTypes = new Class[] { ActionEvent.class };
-                                    Method method = c.getDeclaredMethod(m.group(2), argTypes);
-                                    method.invoke(app.controller, e);
-                                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
-                                    try {
-                                        throw new FileSystemException("Some method in action attribute does not exist in controller");
-                                    } catch (FileSystemException exc) {
-                                        exc.printStackTrace();
-                                    }
+                                    throw new FileSystemException("Some method in action attribute does not exist in controller");
+                                } catch (FileSystemException exc) {
+                                    exc.printStackTrace();
+                                }
+                            }
+                        });
+                    }
+                    else if (component instanceof JSlider){
+                        ((JSlider) component).addChangeListener(e -> {
+                            Class<?> c = app.controller.getClass();
+                            try {
+                                Class<?>[] argTypes = new Class[] { ChangeEvent.class };
+                                Method method = c.getDeclaredMethod(m.group(2), argTypes);
+                                method.invoke(app.controller, e);
+                            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
+                                try {
+                                    throw new FileSystemException("Some method in action attribute does not exist in controller");
+                                } catch (FileSystemException exc) {
+                                    exc.printStackTrace();
                                 }
                             }
                         });

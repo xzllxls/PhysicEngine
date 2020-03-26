@@ -131,8 +131,9 @@ The rest of this file is write in english
     * RadioButton, ToggleButton, CheckBox
         * defaultSelect="" (true or false) --> The initial selection value
         * If multiple RadioButton or ToggleButton are selected in a GroupComponent, they will be selected when the application start
-    * RadioButton, ToggleButton, CheckBox, Button
+    * RadioButton, ToggleButton, CheckBox, Button, Slider
         * action="" --> set the ActionListener on the action attribute content
+        * The method in controller, for most of the action, require ActionEvent param, except for the slider who required a ChangeEvent param
     * ProgressionBar, Slider
         * minValue=""
         * maxValue=""
