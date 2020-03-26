@@ -1,11 +1,15 @@
 package RunTime;
 
-import javax.crypto.Mac;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.file.FileSystemException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -90,7 +94,7 @@ public class GuiScanner {
         Panel, TabPanel, RenderPane, TextField, TextArea, Text, Button, CheckBox, RadioButton, ToggleButton, ColorPicker, ComboBox, List, ProgressionBar, Slider
     }
     enum attribList {
-        text, defaultSelect, minValue, maxValue, value, size
+        text, defaultSelect, minValue, maxValue, value, size, action, componentID
     }
 
     /**
@@ -161,6 +165,7 @@ public class GuiScanner {
      * @throws FileSystemException If the component have attribute issue
      */
     public void setAttribute(JComponent component, ArrayList<String> attributes, Component parent) throws FileSystemException{
+        App app = App.app;
         component.setLayout(null);
         for (String attribute : attributes) {
             Pattern p = Pattern.compile("\\s([a-zA-Z]+)=\"(\\S+)\"");
@@ -242,13 +247,59 @@ public class GuiScanner {
                                     Integer.parseInt(m2.group(3)) * parent.getWidth() / 100,
                                     (Integer.parseInt(m2.group(2)) - Integer.parseInt(m2.group(1))) * parent.getWidth() / 100,
                                     (Integer.parseInt(m2.group(4)) - Integer.parseInt(m2.group(3))) * parent.getWidth() / 100);
+                            if (component instanceof RenderingPanel){
+                                RenderingPanel.width = (Integer.parseInt(m2.group(2)) - Integer.parseInt(m2.group(1))) * parent.getWidth() / 100;
+                                RenderingPanel.height = (Integer.parseInt(m2.group(4)) - Integer.parseInt(m2.group(3))) * parent.getWidth() / 100;
+                                ((RenderingPanel) component).paneInit();
+                            }
                         }
                         else if (m1.group().equals("MAX")) {
                             component.setBounds(0, 0, parent.getWidth(), parent.getHeight());
+                            if (component instanceof RenderingPanel){
+                                RenderingPanel.width = parent.getWidth();
+                                RenderingPanel.height = parent.getHeight();
+                                ((RenderingPanel) component).paneInit();
+                            }
                         }
                         else throw new FileSystemException("Some size attribute are corrupted");
                     }
                     else throw new FileSystemException("Some marker don't have size attribute");
+                    break;
+                case action:
+                    if (component instanceof AbstractButton) {
+                        ((AbstractButton) component).addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                Class<?> c = app.controller.getClass();
+                                try {
+                                    Class<?>[] argTypes = new Class[] { ActionEvent.class };
+                                    Method method = c.getDeclaredMethod(m.group(2), argTypes);
+                                    method.invoke(app.controller, e);
+                                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
+                                    try {
+                                        throw new FileSystemException("Some method in action attribute does not exist in controller");
+                                    } catch (FileSystemException exc) {
+                                        exc.printStackTrace();
+                                    }
+                                }
+                            }
+                        });
+                    }
+                    else throw new FileSystemException("Some component must not have action attribute");
+                    break;
+                case componentID:
+                    Class<?> c = app.controller.getClass();
+                    try {
+                        Field f = c.getField(m.group(2));
+                        if (f.getType() == component.getClass()) {
+                            f.set(app.controller, component);
+                        }
+                        else throw new InternalError("An unexpected error occurred");
+                    } catch (NoSuchFieldException e) {
+                        throw new FileSystemException("Some field in componentID attribute does not exit in controller");
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     throw new FileSystemException("Some marker have incompatible attribute");
