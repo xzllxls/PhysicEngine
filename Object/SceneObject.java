@@ -22,7 +22,7 @@ public class SceneObject {
      * @param mass Masse de l'objet
      * @param rigid Determine si l'objet peut bouger
      */
-    public SceneObject(int mass, boolean rigid){
+    public SceneObject(int mass, boolean rigid, RenderObject model){
         this.mass = mass;
         this.rigid = rigid;
         transform = new Transform(0, 0, 0, 0, 0, 0);
@@ -30,6 +30,7 @@ public class SceneObject {
             vitesse = new Velocity();
         else vitesse = null;
         App.sceneObjects.add(this);
+        this.model = model;
     }
 
     /**

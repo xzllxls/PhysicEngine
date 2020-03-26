@@ -55,7 +55,7 @@ public class RenderObject{
             Pattern p1 = Pattern.compile("x=(-?[0-9]+),y=(-?[0-9]+),z=(-?[0-9]+)");
             Matcher m1 = p1.matcher(m.group());
             m1.find();
-            Vertex vert = new Vertex(Double.parseDouble(m1.group(1)), Double.parseDouble(m1.group(2)), Double.parseDouble(m1.group(3)));
+            Vertex vert = new Vertex(Double.parseDouble(m1.group(1)) / 1000, Double.parseDouble(m1.group(2)) / 1000, Double.parseDouble(m1.group(3)) / 1000);
             vertices.add(vert);
         }
         p = Pattern.compile("T\\{n=t[0-9]+,p=\\{p[0-9]+,p[0-9]+,p[0-9]+},c=#([0-9]+)#([0-9]+)#([0-9]+)}");
@@ -69,7 +69,7 @@ public class RenderObject{
             m2.find();
             Triangle tri = new Triangle(vertices.get(Integer.parseInt(m1.group(1)) - 1), vertices.get(Integer.parseInt(m1.group(2)) - 1),
                     vertices.get(Integer.parseInt(m1.group(3)) - 1),
-            new Color(Integer.parseInt(m2.group(1)), Integer.parseInt(m2.group(2)), Integer.parseInt(m2.group(3))));
+            new Color(Integer.parseInt(m2.group(1)) * 255/100, Integer.parseInt(m2.group(2)) * 255/100, Integer.parseInt(m2.group(3)) * 255/100));
             tris.add(tri);
         }
     }
@@ -111,8 +111,8 @@ public class RenderObject{
             String trisString = "|data_section|[";
             setPosName();
             for (Vertex elem : vertices){
-                verticesString = verticesString.concat("P{n=" + elem.getPosName() + ",x=" + elem.getPos().getPosX() + ",y=" + elem.getPos().getPosY()
-                + ",z=" + elem.getPos().getPosZ() + "},");
+                verticesString = verticesString.concat("P{n=" + elem.getPosName() + ",x=" + elem.getPosX() + ",y=" + elem.getPosY()
+                + ",z=" + elem.getPosZ() + "},");
             }
             verticesString = verticesString.substring(0, verticesString.length() - 1);
             verticesString = verticesString.concat("]|data_end|\n");
