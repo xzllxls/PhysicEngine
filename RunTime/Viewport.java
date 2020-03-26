@@ -32,8 +32,6 @@ public class Viewport implements Runnable{
 
             }
         });
-
-        ((JPanel)panel.getComponent(0)).add(button);
         frame.add(panel);
         frame.setSize(AppConf.width, AppConf.height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

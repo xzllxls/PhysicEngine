@@ -1,10 +1,14 @@
 package RunTime;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+
 
 /**
  * @author Linden Brochu
  */
 public class Controller {
-    public JButton addd = new JButton();
+    public void sliderAction(ChangeEvent e){
+        System.out.println(((JSlider)e.getSource()).getValue());
+    }
 }
