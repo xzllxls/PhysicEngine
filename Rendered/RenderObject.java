@@ -1,7 +1,7 @@
 package Rendered;
 
+import Objects.Transform;
 import RunTime.RunTimeApp;
-import Objects.Position3D;
 import RunTime.Viewport;
 
 import java.awt.*;
@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public class RenderObject{
     private ArrayList<Triangle> tris = new ArrayList<>();
     private ArrayList<Vertex> vertices = new ArrayList<>();
-    private Position3D pivot;
+    private Transform pivot;
 
     /**
      * Instancier un RenderObject a partir d'un fichier
@@ -55,7 +55,7 @@ public class RenderObject{
             Pattern p1 = Pattern.compile("x=(-?[0-9]+),y=(-?[0-9]+),z=(-?[0-9]+)");
             Matcher m1 = p1.matcher(m.group());
             m1.find();
-            Vertex vert = new Vertex(Double.parseDouble(m1.group(1)) / 1000, Double.parseDouble(m1.group(2)) / 1000, Double.parseDouble(m1.group(3)) / 1000);
+            Vertex vert = new Vertex(Double.parseDouble(m1.group(1)), Double.parseDouble(m1.group(2)), Double.parseDouble(m1.group(3)));
             vertices.add(vert);
         }
         p = Pattern.compile("T\\{n=t[0-9]+,p=\\{p[0-9]+,p[0-9]+,p[0-9]+},c=#([0-9]+)#([0-9]+)#([0-9]+)}");
@@ -154,11 +154,11 @@ public class RenderObject{
         return vertices;
     }
 
-    public Position3D getPivot() {
+    public Transform getPivot() {
         return pivot;
     }
 
-    public void setPivot(Position3D pivot) {
+    public void setPivot(Transform pivot) {
         this.pivot = pivot;
     }
 }

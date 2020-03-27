@@ -1,10 +1,10 @@
 package RunTime;
 
 import Rendered.RenderObject;
+import RunTime.RenderUI.ModelViewController;
 
 import javax.swing.*;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -24,7 +24,27 @@ public class Viewport implements Runnable{
         frame = new JFrame(AppConf.title + " Viewport");
         frame.setLayout(null);
         frame.setBounds(0, 0, AppConf.width, AppConf.height);
-        JPanel panel = setGui("default.gui"); //This is the background
+        JPanel panel; //This is the background
+        switch (AppConf.appType){
+            case ModelView:
+                 panel = setGui("model_view.gui");
+                 App.app.controller = new ModelViewController();
+                break;
+            case ModelMaker:
+                panel = setGui("default.gui");
+                break;
+            case SimpleApp:
+                panel = setGui("default.gui");
+                break;
+            case UIBuilder:
+                panel = setGui("default.gui");
+                break;
+            case SceneBuilder:
+                panel = setGui("default.gui");
+                break;
+            default:
+                throw new InternalError("An unexpected error occurred");
+        }
         JButton button = new JButton();
         button.addActionListener(new ActionListener() {
             @Override

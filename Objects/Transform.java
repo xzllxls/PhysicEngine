@@ -15,6 +15,7 @@ public class Transform {
      */
     public Transform(double x, double y, double z){
         pos = new Position3D(x, y, z);
+        rot = new Rotation();
     }
 
     /**

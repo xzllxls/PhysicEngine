@@ -77,4 +77,25 @@ public class Vertex extends Position3D{
     public int hashCode() {
         return Objects.hash(super.hashCode(), x, y, z);
     }
+
+    /**
+     * Positionne l'objet sur une autre position
+     * @param position3D Autre position
+     */
+    public void cloneOtherPos(Vertex position3D){
+        x = position3D.getPosX();
+        y = position3D.getPosY();
+        y = position3D.getPosZ();
+    }
+
+    /**
+     * Creer une position a l'emplacement d'une autre position
+     * @param position3D Autre position
+     * @return Position3D clonee
+     */
+    public static Vertex clone(Vertex position3D){
+        Vertex pos = new Vertex(0, 0, 0);
+        pos.cloneOtherPos(position3D);
+        return pos;
+    }
 }

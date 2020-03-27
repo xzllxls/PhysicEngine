@@ -25,8 +25,6 @@ The rest of this file is write in english
 ## Development tool
 * IntelliJ
 * SDK 14
-* OpenGL
-* JOGL
     
 ## Repository
 ### RunTime
@@ -38,7 +36,7 @@ The rest of this file is write in english
 #### RenderFile
 * Must contain all 3d .rend file
 
-### Object
+### Objects
 * Contain every script required to create a virtual object
 
 ### Engine
@@ -64,14 +62,14 @@ The rest of this file is write in english
 * Engine/PhysicEngine
     * Contain all data for physic simulation
 * Engine/PhysicsMath
-    * Contain many method to instantiate Engine's and Object's scripts
+    * Contain many method to instantiate Engine's and Objects's scripts
 * Engine/PathMath
     * Contain many method to calculate Path
 * Rendered/RenderObject
-    * Object that we can see
-* Object/SceneObject
-    * Object that contain data and that we operate physic
-* Object/Vector3D
+    * Objects that we can see
+* Objects/SceneObject
+    * Objects that contain data and that we operate physic
+* Objects/Vector3D
     * Base script to describe a 3d line
 
 ## 3D File format

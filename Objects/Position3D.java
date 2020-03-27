@@ -1,5 +1,7 @@
 package Objects;
 
+import Rendered.Vertex;
+
 import java.text.DecimalFormat;
 import java.util.Objects;
 

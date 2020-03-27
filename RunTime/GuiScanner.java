@@ -246,14 +246,17 @@ public class GuiScanner {
                         Matcher m2 = p2.matcher(m1.group());
                         if (m2.find()){
                             component.setBounds(Integer.parseInt(m2.group(1)) * parent.getWidth() / 100,
-                                    Integer.parseInt(m2.group(3)) * parent.getWidth() / 100,
+                                    Integer.parseInt(m2.group(3)) * parent.getHeight() / 100,
                                     (Integer.parseInt(m2.group(2)) - Integer.parseInt(m2.group(1))) * parent.getWidth() / 100,
-                                    (Integer.parseInt(m2.group(4)) - Integer.parseInt(m2.group(3))) * parent.getWidth() / 100);
+                                    (Integer.parseInt(m2.group(4)) - Integer.parseInt(m2.group(3))) * parent.getHeight() / 100);
                             if (component instanceof RenderingPanel){
                                 RenderingPanel.width = (Integer.parseInt(m2.group(2)) - Integer.parseInt(m2.group(1))) * parent.getWidth() / 100;
-                                RenderingPanel.height = (Integer.parseInt(m2.group(4)) - Integer.parseInt(m2.group(3))) * parent.getWidth() / 100;
+                                RenderingPanel.height = (Integer.parseInt(m2.group(4)) - Integer.parseInt(m2.group(3))) * parent.getHeight() / 100;
                                 ((RenderingPanel) component).paneInit();
                             }
+                            else if (component instanceof JSlider)
+                                if (component.getHeight() > component.getWidth())
+                                    ((JSlider) component).setOrientation(SwingConstants.VERTICAL);
                         }
                         else if (m1.group().equals("MAX")) {
                             component.setBounds(0, 0, parent.getWidth(), parent.getHeight());

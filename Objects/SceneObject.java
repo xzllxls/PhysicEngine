@@ -37,6 +37,7 @@ public class SceneObject {
         else vitesse = null;
         App.sceneObjects.add(this);
         this.model = model;
+        model.getPivot().setRot(transform.getRot());
     }
 
     /**
@@ -56,6 +57,7 @@ public class SceneObject {
         else vitesse = null;
         App.sceneObjects.add(this);
         this.model = new RenderObject(modelName);
+        model.setPivot(transform);
     }
 
     /**

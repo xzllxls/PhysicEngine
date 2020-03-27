@@ -1,15 +1,14 @@
 package RunTime;
 
-import Object.SceneObject;
+import Objects.SceneObject;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
  * @author Linden Brochu
  */
 public class App {
-    public static ArrayList<SceneObject> sceneObjects = new ArrayList<SceneObject>();
+    public static ArrayList<SceneObject> sceneObjects = new ArrayList<>();
     public static App app;
     public Controller controller = new Controller();
     /**
@@ -25,6 +24,7 @@ public class App {
      */
     public void update(){
         //Call your object update function
+
 
     }
 
