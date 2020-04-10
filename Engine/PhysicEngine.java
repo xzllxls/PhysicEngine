@@ -12,4 +12,13 @@ public class PhysicEngine {
 
     public static final Force GRAVITY_VECTOR = new Force(0, GRAVITY, 0);
     public static final Force AIR_RESISTANCE_VECTOR = new Force(AIR_RESISTANCE, AIR_RESISTANCE, AIR_RESISTANCE);
+
+    /**
+     * Créer une instance de la physique
+     * @param scene Scène du logiciel
+     */
+    public PhysicEngine(Scene scene) throws InterruptedException {
+        scene.start();
+        scene.updateStart();
+    }
 }

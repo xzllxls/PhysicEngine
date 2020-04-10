@@ -13,7 +13,6 @@ public class Position3D extends Point3d {
         this.z = z;
     }
 
-
     @Override
     public double getX() {
         return x;

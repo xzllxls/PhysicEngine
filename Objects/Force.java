@@ -42,4 +42,9 @@ public class Force extends Vector {
     public void setZ(double z) {
         this.z = z;
     }
+
+    @Override
+    public double getLinearDistance() {
+        return linearDistance;
+    }
 }
