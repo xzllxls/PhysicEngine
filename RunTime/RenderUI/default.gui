@@ -1,6 +1,0 @@
-<?gui ?>
-<root>
-    <Panel size="MAX">
-        <Slider size="20:80:10:30" minValue="0" maxValue="100" value="50" action="sliderAction"/>
-    </Panel>
-</root>

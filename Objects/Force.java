@@ -1,18 +1,17 @@
 package Objects;
 
-import Engine.Point3d;
+import Engine.Vector;
 
 /**
  * @author Linden Brochu
  */
-public class Position3D extends Point3d {
+public class Force extends Vector {
 
-    public Position3D(double x, double y, double z){
+    public Force(double x, double y, double z){
         this.x = x;
         this.y = y;
         this.z = z;
     }
-
 
     @Override
     public double getX() {

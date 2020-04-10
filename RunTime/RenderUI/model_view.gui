@@ -1,8 +1,0 @@
-<?gui ?>
-<root>
-    <Panel size="MAX">
-        <Slider size="10:30:10:20" minValue="0" maxValue="360" value="180" action="horizSlider"/>
-        <Slider size="0:10:20:40" minValue="0" maxValue="180" value="90" action="vertSlider"/>
-        <RenderPane size="50:100:0:100"/>
-    </Panel>
-</root>
