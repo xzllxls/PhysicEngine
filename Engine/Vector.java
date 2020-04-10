@@ -1,5 +1,7 @@
 package Engine;
 
+import Objects.Velocity;
+
 /**
  * @author Linden Brochu
  */
@@ -8,6 +10,13 @@ public abstract class Vector {
     protected double y;
     protected double z;
     protected double linearDistance;
+
+    public Vector appliquerVecteur(Vector vector){
+        x += vector.getX();
+        y += vector.getY();
+        z += vector.getZ();
+        return this;
+    }
 
     public abstract double getX();
 

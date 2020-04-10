@@ -9,7 +9,9 @@ import java.util.ArrayList;
  * @author Linden Brochu
  */
 public class SceneObject {
-    ArrayList<Component> components;
+    public ArrayList<Component> components;
+    public Transform transform = new Transform();
+    Skeleton skeleton;
 
     public SceneObject(ArrayList<Component> components){
         this.components = components;

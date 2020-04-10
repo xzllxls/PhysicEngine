@@ -13,15 +13,6 @@ public class Velocity extends Vector {
         this.z = z;
     }
 
-    public Velocity appliquerForce(Force[] forces){
-        for (Force elem : forces){
-            x += elem.getX();
-            y += elem.getY();
-            z += elem.getZ();
-        }
-        return this;
-    }
-
     @Override
     public double getX() {
         return x;

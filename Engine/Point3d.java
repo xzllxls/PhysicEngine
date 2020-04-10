@@ -8,6 +8,13 @@ public abstract class Point3d {
     protected double y;
     protected double z;
 
+    public Point3d appliquerVecteur(Vector vector){
+        x += vector.getX();
+        y += vector.getY();
+        z += vector.getZ();
+        return this;
+    }
+
     public abstract double getX();
 
     public abstract void setX(double x);

@@ -36,7 +36,8 @@ public class Scene {
     }
 
     private void update(){
-
+        for (SceneObject elem : objects)
+            elem.transform.appliquerTransorm();
     }
 
 }
