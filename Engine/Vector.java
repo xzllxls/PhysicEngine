@@ -31,9 +31,9 @@ public abstract class Vector {
     }
 
     public Vector appliquerVecteur(Vector vector){
-        x += vector.getX();
-        y += vector.getY();
-        z += vector.getZ();
+        x += vector.x;
+        y += vector.y;
+        z += vector.z;
         setLinearDistance();
         return this;
     }
@@ -53,20 +53,6 @@ public abstract class Vector {
         setLinearDistance();
         return this;
     }
-
-    public abstract double getX();
-
-    public abstract void setX(double x);
-
-    public abstract double getY();
-
-    public abstract void setY(double y);
-
-    public abstract double getZ();
-
-    public abstract void setZ(double z);
-
-    public abstract double getLinearDistance();
 
     protected void setLinearDistance(){
         linearDistance = Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));
