@@ -4,10 +4,10 @@ package Engine;
  * @author Linden Brochu
  */
 public abstract class Vector {
-    protected double x;
-    protected double y;
-    protected double z;
-    protected double linearDistance;
+    public double x;
+    public double y;
+    public double z;
+    public double linearDistance;
 
     public Vector(Vector vector){
         x = vector.x;

@@ -2,6 +2,7 @@ package Objects;
 
 import Engine.Component;
 import Engine.PhysicEngine;
+import Engine.Vector;
 
 /**
  * @author Linden Brochu
@@ -13,6 +14,20 @@ public class Transform extends Component {
 
     public Transform(SceneObject parent) {
         super(parent);
+    }
+
+    public void translate(double x, double y, double z){
+        position.move(x, y, z);
+    }
+
+    public void translate(Vector vector){
+        position.move(vector.x, vector.y, vector.z);
+    }
+
+    public void setPosition(double x, double y, double z){
+        position.x = x;
+        position.y = y;
+        position.z = z;
     }
 
     public void appliquerTransorm(){
