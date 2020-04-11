@@ -7,19 +7,16 @@ import Engine.Vector;
  */
 public class Acceleration extends Vector {
 
-    public Acceleration(double x, double y, double z){
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public Acceleration(Acceleration acc){
+        super(acc);
     }
 
-    public Acceleration appliquerForce(Force[] forces){
-        for (Force elem : forces){
-            x += elem.getX();
-            y += elem.getY();
-            z += elem.getZ();
-        }
-        return this;
+    public Acceleration(double x, double y, double z) {
+        super(x, y, z);
+    }
+
+    public Acceleration(){
+        super();
     }
 
     @Override

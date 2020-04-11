@@ -8,9 +8,11 @@ import Engine.Vector;
 public class Velocity extends Vector {
 
     public Velocity(double x, double y, double z){
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        super(x, y, z);
+    }
+
+    public Velocity(){
+        super();
     }
 
     @Override
