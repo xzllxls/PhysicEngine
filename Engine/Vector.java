@@ -89,4 +89,54 @@ public abstract class Vector {
     protected void setLinearDistance(){
         linearDistance = Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));
     }
+
+    /**
+     * Limiter les composantes du vecteur (Peut déformer le vecteur)
+     * @param vector Vecteur max
+     * @return Le vecteur limité
+     */
+    public Vector limit(Vector vector){
+        if (x > vector.x)
+            x = vector.x;
+        if (y > vector.y)
+            y = vector.y;
+        if (z > vector.z)
+            z = vector.z;
+        setLinearDistance();
+        return this;
+    }
+
+    /**
+     * Limite la norme du vecteur (garde les proportions du vecteur)
+     * @param linearDistance Norme max
+     * @return Le vecteur limité
+     */
+    public Vector limit(double linearDistance){
+        if (this.linearDistance > linearDistance){
+            double ratio = linearDistance / this.linearDistance;
+            x *= ratio;
+            y *= ratio;
+            z *= ratio;
+        }
+        setLinearDistance();
+        return this;
+    }
+
+    /**
+     * Limiter les composantes du vecteur (Peut déformer le vecteur)
+     * @param x Composante x
+     * @param y Composante y
+     * @param z Composante z
+     * @return Le vecteur limité
+     */
+    public Vector limit(double x, double y, double z){
+        if (this.x > x)
+            this.x = x;
+        if (this.y > y)
+            this.y = y;
+        if (this.z > z)
+            this.z = z;
+        setLinearDistance();
+        return this;
+    }
 }
