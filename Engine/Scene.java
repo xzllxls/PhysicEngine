@@ -6,20 +6,40 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 /**
+ * Scène de l'application
  * @author Linden Brochu
  */
 public class Scene {
-    static ArrayList<SceneObject> objects = new ArrayList<>();
+    public static ArrayList<SceneObject> objects = new ArrayList<>(); //Liste de tout les objets de la scène
 
+    /**
+     * Ajouter un objet à la scène
+     * @param object SceneObject à ajouter
+     */
     public static void ajouterObject(SceneObject object){
         objects.add(object);
     }
 
+    /**
+     * Initialise la scène
+     */
     public void start(){
-
+        for (SceneObject elem : objects) {
+            for (Script script : elem.scripts)
+                script.start();
+        }
+        try {
+            updateStart();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void updateStart() throws InterruptedException {
+    /**
+     * Démarre la sécance de mise à jour de la scène
+     * @throws InterruptedException
+     */
+    private void updateStart() throws InterruptedException {
         long frameStart;
         long frameEnd;
         long frameTime;
@@ -35,9 +55,15 @@ public class Scene {
         }
     }
 
+    /**
+     * Sécance de mise à jour de la scène
+     */
     private void update(){
-        for (SceneObject elem : objects)
+        for (SceneObject elem : objects) {
             elem.transform.appliquerTransorm();
+            for (Script script : elem.scripts)
+                script.update();
+        }
     }
 
 }

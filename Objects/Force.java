@@ -3,34 +3,47 @@ package Objects;
 import Engine.Vector;
 
 /**
+ * Vecteur de force
  * @author Linden Brochu
  */
 public class Force extends Vector {
-    public boolean scalable;
-
+    /**
+     * Type de force
+     */
     public enum Type {
         Naturel, Scalable
     }
 
+    Type type; //Type de force
+
+    /**
+     * Instancier une force
+     * @param x Unité en i
+     * @param y Unité en j
+     * @param z Unité en k
+     * @param type Type de force
+     */
     public Force(double x, double y, double z, Type type){
         super(x, y, z);
-        switch (type){
-            case Naturel:
-                scalable = false;
-                break;
-            case Scalable:
-                scalable = true;
-                break;
-        }
+        this.type = type;
     }
 
+    /**
+     * Instancier une force
+     * @param x Unité en i
+     * @param y Unité en j
+     * @param z Unité en k
+     */
     public Force(double x, double y, double z){
         super(x, y, z);
-        scalable = false;
+        type = Type.Naturel;
     }
 
+    /**
+     * Instancier une force nulle
+     */
     public Force(){
         super();
-        scalable = false;
+        type = Type.Naturel;
     }
 }

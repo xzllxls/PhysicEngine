@@ -33,7 +33,7 @@ public class Transform extends Component {
     public void appliquerTransorm(){
         Acceleration acc = new Acceleration(acceleration);
         acc.appliquerVecteur(PhysicEngine.AIR_RESISTANCE_VECTOR.scale(velocity));
-        acc.scale(parent.mass);
+        acc.scale(parent.mass / PhysicEngine.CONSTANT_FRAME);
         position.appliquerVecteur(velocity.appliquerVecteur(acc));
     }
 
