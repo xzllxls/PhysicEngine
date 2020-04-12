@@ -45,6 +45,20 @@ public abstract class Point {
     }
 
     /**
+     * Changer la position d'un point
+     * @param x Position absolue x
+     * @param y Position absolue y
+     * @param z Position absolue z
+     * @return Le point déplacé
+     */
+    public Point setPosition(double x, double y, double z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        return this;
+    }
+
+    /**
      * Applique un vecteur au point
      * @param vector Vecteur à appliquer
      * @return Le point déplacé

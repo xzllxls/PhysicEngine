@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class SceneObject {
     public ArrayList<Script> scripts = new ArrayList<>(); //Liste de script
     public Transform transform = new Transform(this); //Composante transform de l'objet
-    Skeleton skeleton; //Squelette et mesh de l'objet
+    Skeleton skeleton = new Skeleton(this); //Squelette et mesh de l'objet
 
     public double mass; //mass de l'objet
 

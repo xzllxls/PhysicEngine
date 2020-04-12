@@ -35,6 +35,7 @@ public class Transform extends Component {
         acc.appliquerVecteur(PhysicEngine.AIR_RESISTANCE_VECTOR.scale(velocity));
         acc.scale(parent.mass / PhysicEngine.CONSTANT_FRAME);
         position.appliquerVecteur(velocity.appliquerVecteur(acc));
+        parent.skeleton.updateSkeleton(position);
     }
 
     public void appliquerForce(Force[] forces){
