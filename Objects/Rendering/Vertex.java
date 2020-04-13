@@ -18,4 +18,6 @@ public class Vertex extends Point {
     public Vertex(double x, double y, double z){
         super(x, y, z);
     }
+
+
 }
