@@ -40,6 +40,15 @@ public class Force extends Vector {
     }
 
     /**
+     * Instancier une copie d'une force
+     * @param force Force à copier
+     */
+    public Force(Force force){
+        super(force);
+        this.type = force.type;
+    }
+
+    /**
      * Instancier une force nulle
      */
     public Force(){

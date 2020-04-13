@@ -12,7 +12,7 @@ public abstract class Polygon {
 
     public Surface surfaceType;
 
-    public Polygon(Vertex[] vertices, Surface surfaceType){
+    public Polygon(Surface surfaceType, Vertex... vertices){
         this.vertices = vertices;
         this.surfaceType = surfaceType;
     }

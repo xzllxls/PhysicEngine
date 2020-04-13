@@ -10,8 +10,13 @@ import java.util.ArrayList;
  * @author Linden Brochu
  */
 public class Skeleton extends Component {
-    ArrayList<Vertex> vertices = new ArrayList<>();
-    ArrayList<Polygon> polygons = new ArrayList<>();
+    public ArrayList<Vertex> vertices = new ArrayList<>();
+    public ArrayList<Polygon> polygons = new ArrayList<>();
+    //public ArrayList<Bone> bones = new ArrayList<>();
+
+    public enum BodyType {
+        Rigid, Static, Elastic
+    }
 
     public Skeleton(SceneObject parent) {
         super(parent);

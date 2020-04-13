@@ -44,14 +44,20 @@ public class Scene {
         long frameEnd;
         long frameTime;
         long maxFrameTime = Duration.ofSeconds(1).toMillis() / PhysicEngine.CONSTANT_FRAME;
+        long latence = 0;
         while (true){
              frameStart = System.currentTimeMillis();
              update();
              frameEnd = System.currentTimeMillis();
              frameTime = frameEnd - frameStart;
-             if (maxFrameTime > frameTime)
-                Thread.sleep(maxFrameTime - frameTime);
-             else System.out.println(frameTime - maxFrameTime + " millisecondes de latence");
+             if (maxFrameTime > frameTime + latence) {
+                 latence = 0;
+                 Thread.sleep(maxFrameTime - frameTime);
+             }
+             else {
+                 latence += frameTime - maxFrameTime;
+                 System.out.println(latence + " millisecondes de latence");
+             }
         }
     }
 
@@ -60,9 +66,9 @@ public class Scene {
      */
     private void update(){
         for (SceneObject elem : objects) {
-            elem.transform.appliquerTransorm();
             for (Script script : elem.scripts)
                 script.update();
+            elem.transform.appliquerTransorm();
         }
     }
 

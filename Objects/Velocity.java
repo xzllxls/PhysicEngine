@@ -19,10 +19,32 @@ public class Velocity extends Vector {
     }
 
     /**
+     * Instancier une copie d'une vitesse
+     * @param velocity Vitesse à copier
+     */
+    public Velocity(Velocity velocity){
+        super(velocity);
+    }
+
+    /**
      * Instancier un vitesse nulle
      */
     public Velocity(){
         super();
+    }
+
+    /**
+     * Créer une copie de la vélocité, puis retourne sa valeur à l'exposant
+     * @param puissance Exposant
+     * @return Copie de la vélocité
+     */
+    public Velocity pow(int puissance){
+        Velocity velocity = new Velocity(this);
+        velocity.x *= Math.abs(velocity.x);
+        velocity.y *= Math.abs(velocity.y);
+        velocity.z *= Math.abs(velocity.z);
+        setLinearDistance();
+        return velocity;
     }
 
 }
