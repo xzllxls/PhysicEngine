@@ -30,7 +30,7 @@ public abstract class TypePolygon {
     public void render(Graphics g){
         Polygon poly = new Polygon();
         for (int i = 0; i < vertices.length; i++){
-            Point p = VertexConverter.convert(vertices[i]);
+            Point p = VertexParser.convert(vertices[i]);
             poly.addPoint(p.x, p.y);
         }
         g.setColor(color);

@@ -7,7 +7,6 @@ import Engine.Point;
  * @author Linden Brochu
  */
 public class Vertex extends Point {
-    public double weight;
 
     /**
      * Instancier un vertex

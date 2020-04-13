@@ -1,8 +1,8 @@
 package Engine.UI;
 
 import Engine.Scene;
+import Objects.Rendering.Prefab.CubicPrism;
 import Objects.Rendering.TypePolygon;
-import Objects.Rendering.Vertex;
 import Objects.SceneObject;
 
 import javax.swing.*;
@@ -16,6 +16,8 @@ public class Display extends Canvas {
     private static String title = "PhysicEngine";
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
+
+    CubicPrism cube = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 100, 100, 1000);
 
     public Display(Scene parent){
         this.parent = parent;
@@ -63,21 +65,7 @@ public class Display extends Canvas {
             object.skeleton.render(g);
         }
 
-        TypePolygon poly = new TypePolygon(TypePolygon.Surface.Solid,
-                new Vertex(100, 0, 0),
-                new Vertex(0, 0, 0),
-                new Vertex(50, 50, 0)) {
-            @Override
-            public void render(Graphics g) {
-                super.render(g);
-            }
-
-            @Override
-            public void setColor(Color color) {
-                super.setColor(color);
-            }
-        };
-        poly.render(g);
+        cube.render(g);
 
         g.dispose();
         bs.show();
