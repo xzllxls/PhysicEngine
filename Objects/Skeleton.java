@@ -1,11 +1,13 @@
 package Objects;
 
 import Engine.Component;
+import Objects.Rendering.Prefab.TypePrism;
 import Objects.Rendering.TypePolygon;
 import Objects.Rendering.Vertex;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author Linden Brochu
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 public class Skeleton extends Component {
     public ArrayList<Vertex> vertices = new ArrayList<>();
     public ArrayList<TypePolygon> polygons = new ArrayList<>();
-    //public ArrayList<Bone> bones = new ArrayList<>();
+    //public ArrayList<BoneSkeleton> bones = new ArrayList<>();
 
     public enum BodyType {
         Rigid, Static, Elastic
@@ -30,6 +32,15 @@ public class Skeleton extends Component {
     public void render(Graphics g){
         for (TypePolygon poly : polygons){
             poly.render(g);
+        }
+    }
+
+    public void convertTypePrism(TypePrism prism){
+        vertices.clear();
+        polygons.clear();
+        for (TypePolygon poly : prism.polygons){
+            vertices.addAll(Arrays.asList(poly.vertices));
+            polygons.add(poly);
         }
     }
 }
