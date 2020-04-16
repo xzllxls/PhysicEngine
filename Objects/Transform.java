@@ -3,6 +3,7 @@ package Objects;
 import Engine.Component;
 import Engine.PhysicEngine;
 import Engine.Vector;
+import Objects.Modules.Transform.CollisionManager;
 
 /**
  * @author Linden Brochu
@@ -11,6 +12,7 @@ public class Transform extends Component {
     public Position position = new Position(0,0,0);
     public Velocity velocity = new Velocity(0,0,0);
     public Acceleration acceleration = new Acceleration(0,0,0);
+    public CollisionManager collisionManager;
 
     public Transform(SceneObject parent) {
         super(parent);
