@@ -1,12 +1,12 @@
 package Objects.Rendering;
 
-import Engine.Point;
+import Engine.TypePoint;
 
 /**
  * Position 3d
  * @author Linden Brochu
  */
-public class Vertex extends Point {
+public class Vertex extends TypePoint {
 
     /**
      * Instancier un vertex

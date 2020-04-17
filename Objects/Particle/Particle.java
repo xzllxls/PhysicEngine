@@ -1,11 +1,11 @@
 package Objects.Particle;
 
-import Engine.Point;
+import Engine.TypePoint;
 
 /**
  * @author Linden Brochu
  */
-public abstract class Particle extends Point {
+public abstract class Particle extends TypePoint {
 
     public Particle(double x, double y, double z) {
         super(x, y, z);

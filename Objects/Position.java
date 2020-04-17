@@ -1,12 +1,12 @@
 package Objects;
 
-import Engine.Point;
+import Engine.TypePoint;
 
 /**
  * Position 3d
  * @author Linden Brochu
  */
-public class Position extends Point {
+public class Position extends TypePoint {
 
     /**
      * Instancier une position à des coordonnées

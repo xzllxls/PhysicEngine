@@ -4,7 +4,7 @@ package Engine;
  * Coordonnée en 3 dimension
  * @author Linden Brochu
  */
-public abstract class Point {
+public abstract class TypePoint {
     public double x; //Position x
     public double y; //Position y
     public double z; //Position z
@@ -15,7 +15,7 @@ public abstract class Point {
      * @param y Coordonnée en y
      * @param z Coordonnée en z
      */
-    public Point(double x, double y, double z){
+    public TypePoint(double x, double y, double z){
         this.x = x;
         this.y = y;
         this.z = z;
@@ -24,7 +24,7 @@ public abstract class Point {
     /**
      * Instancier un point en (0,0,0)
      */
-    public Point(){
+    public TypePoint(){
         x = 0;
         y = 0;
         z = 0;
@@ -37,7 +37,7 @@ public abstract class Point {
      * @param z Déplacement en z
      * @return Le point déplacé
      */
-    public Point move(double x, double y, double z){
+    public TypePoint move(double x, double y, double z){
         this.x += x;
         this.y += y;
         this.z += z;
@@ -51,7 +51,7 @@ public abstract class Point {
      * @param z Position absolue z
      * @return Le point déplacé
      */
-    public Point setPosition(double x, double y, double z){
+    public TypePoint setPosition(double x, double y, double z){
         this.x = x;
         this.y = y;
         this.z = z;
@@ -63,7 +63,7 @@ public abstract class Point {
      * @param vector Vecteur à appliquer
      * @return Le point déplacé
      */
-    public Point appliquerVecteur(Vector vector){
+    public TypePoint appliquerVecteur(Vector vector){
         x += vector.x;
         y += vector.y;
         z += vector.z;
