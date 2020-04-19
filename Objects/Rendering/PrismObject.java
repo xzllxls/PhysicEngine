@@ -26,4 +26,8 @@ public class PrismObject extends TypeObject {
     public void render(Graphics g){
         prism.render(g, pos);
     }
+
+    public void render(Graphics g, Position pos){
+        prism.render(g, pos);
+    }
 }

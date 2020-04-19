@@ -80,7 +80,7 @@ public class Scene {
         for (SceneObject elem : objects) {
             for (Script script : elem.scripts)
                 script.update();
-            elem.transform.appliquerTransorm();
+            elem.transform.appliquerTransform();
         }
         display.runUpdate();
     }

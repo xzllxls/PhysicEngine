@@ -32,17 +32,26 @@ public class Transform extends Component {
         position.z = z;
     }
 
-    public void appliquerTransorm(){
-        Acceleration acc = new Acceleration(acceleration);
-        acc.appliquerVecteur(new Force(PhysicEngine.AIR_RESISTANCE_VECTOR).scale(velocity.pow(2)));
-        acc.scale(parent.mass / PhysicEngine.CONSTANT_FRAME);
-        position.appliquerVecteur(velocity.appliquerVecteur(acc));
-        parent.skeleton.updateSkeleton(position);
+    public void appliquerTransform(){
+        appliquerAcceleration();
+        appliquerVelocity();
     }
 
-    public void appliquerForce(Force[] forces){
+    private void appliquerAcceleration(){
+        Acceleration acc = new Acceleration(acceleration);
+//        acc.appliquerVecteur(new Force(PhysicEngine.GRAVITY_VECTOR));
+        acc.appliquerVecteur((new Force(PhysicEngine.AIR_RESISTANCE_VECTOR)).scale(velocity));
+        velocity.appliquerVecteur(acc.scale(1.0/PhysicEngine.CONSTANT_FRAME));
+//        velocity.roundMin(PhysicEngine.vectorMinLimit);
+    }
+
+    private void appliquerVelocity(){
+        position.appliquerVecteur(new Velocity(velocity).scale(PhysicEngine.PIXEL_PER_METER));
+    }
+
+    public void appliquerForce(Force... forces){
         for (Force force : forces){
-            acceleration.appliquerVecteur(force);
+            acceleration.appliquerVecteur(new Acceleration(force.x, force.y, force.z).scale(1.0/parent.mass));
         }
     }
 }

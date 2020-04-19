@@ -37,18 +37,18 @@ public class VertexParser {
     }
 
     public static void rotateAxisX(Vertex vertex, double degrees){
-        double radius = Math.sqrt(vertex.x * vertex.x + vertex.z * vertex.z);
-        double theta = Math.atan2(vertex.z, vertex.x);
-        theta += ((2 * PhysicEngine.PI) / 360) * degrees;
-        vertex.x = radius * Math.cos(theta);
-        vertex.z = radius * Math.sin(theta);
-    }
-
-    public static void rotateAxisY(Vertex vertex, double degrees){
         double radius = Math.sqrt(vertex.z * vertex.z + vertex.y * vertex.y);
         double theta = Math.atan2(vertex.z, vertex.y);
         theta += ((2 * PhysicEngine.PI) / 360) * degrees;
         vertex.y = radius * Math.cos(theta);
+        vertex.z = radius * Math.sin(theta);
+    }
+
+    public static void rotateAxisY(Vertex vertex, double degrees){
+        double radius = Math.sqrt(vertex.x * vertex.x + vertex.z * vertex.z);
+        double theta = Math.atan2(vertex.z, vertex.x);
+        theta += ((2 * PhysicEngine.PI) / 360) * degrees;
+        vertex.x = radius * Math.cos(theta);
         vertex.z = radius * Math.sin(theta);
     }
 

@@ -139,4 +139,24 @@ public abstract class Vector {
         setLinearDistance();
         return this;
     }
+
+    public Vector roundMin(double xMin, double yMin, double zMin){
+        if (this.x < xMin && this.x > -xMin)
+            this.x = 0;
+        if (this.y < yMin && this.y > -yMin)
+            this.y = 0;
+        if (this.z < zMin && this.z > -zMin)
+            this.z = 0;
+        return this;
+    }
+
+    public Vector roundMin(double min){
+        if (this.x < min && this.x > -min)
+            this.x = 0;
+        if (this.y < min && this.y > -min)
+            this.y = 0;
+        if (this.z < min && this.z > -min)
+            this.z = 0;
+        return this;
+    }
 }

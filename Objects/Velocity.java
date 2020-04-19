@@ -38,12 +38,15 @@ public class Velocity extends Vector {
      * @param puissance Exposant
      * @return Copie de la vélocité
      */
+    @Deprecated
     public Velocity pow(int puissance){
         Velocity velocity = new Velocity(this);
-        velocity.x *= Math.abs(velocity.x);
-        velocity.y *= Math.abs(velocity.y);
-        velocity.z *= Math.abs(velocity.z);
-        setLinearDistance();
+        for (int i = 1; i < puissance; i++) {
+            velocity.x *= Math.abs(velocity.x);
+            velocity.y *= Math.abs(velocity.y);
+            velocity.z *= Math.abs(velocity.z);
+        }
+        velocity.setLinearDistance();
         return velocity;
     }
 

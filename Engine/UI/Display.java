@@ -1,6 +1,8 @@
 package Engine.UI;
 
 import Engine.Scene;
+import Objects.Force;
+import Objects.Position;
 import Objects.Rendering.Prefab.CubicPrism;
 import Objects.Rendering.PrismObject;
 import Objects.Rendering.TypePolygon;
@@ -9,17 +11,21 @@ import Objects.SceneObject;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.Collections;
 
 public class Display extends Canvas {
     public Scene parent;
 
-    private JFrame frame;
-    private static String title = "PhysicEngine";
+    private final JFrame frame;
+    private static final String title = "PhysicEngine";
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
 
-    CubicPrism cube = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 100, 100, 100);
-    PrismObject prism = new PrismObject(cube, 200, 200, 0);
+    CubicPrism cube = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 50, 100, 100);
+    PrismObject prism = new PrismObject(cube, 0, 0, 0);
+
+    CubicPrism cube2 = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 50, 100, 100);
+    PrismObject prism2 = new PrismObject(cube2, 0, 0, 0);
 
 
     public Display(Scene parent){
@@ -37,6 +43,13 @@ public class Display extends Canvas {
         this.frame.setResizable(false);
         this.frame.setVisible(true);
 
+        Scene.objects.get(0).transform.position = new Position(0,100,-1000);
+        Scene.objects.get(0).skeleton.prism = prism;
+        Scene.objects.get(0).transform.acceleration.x = 1;
+
+        Scene.objects.get(1).transform.position = new Position(0,-100,0);
+        Scene.objects.get(1).skeleton.prism = prism;
+        Scene.objects.get(1).transform.appliquerForce(new Force(10,0,0));
         start();
     }
 
@@ -68,8 +81,10 @@ public class Display extends Canvas {
             object.skeleton.render(g);
         }
 
-        prism.render(g);
-        cube.rotate(0,0,0);
+//        prism.render(g);
+//        cube.rotate(0,0,0);
+
+//        System.out.println(Scene.objects.get(0).transform.position.x);
 
         g.dispose();
         bs.show();
