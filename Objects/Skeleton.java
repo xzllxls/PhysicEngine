@@ -31,7 +31,7 @@ public class Skeleton extends Component {
 
     public void render(Graphics g){
         for (TypePolygon poly : polygons){
-            poly.render(g);
+            poly.render(g, parent.transform.position);
         }
     }
 

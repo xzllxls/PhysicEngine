@@ -2,6 +2,7 @@ package Engine.UI;
 
 import Engine.Scene;
 import Objects.Rendering.Prefab.CubicPrism;
+import Objects.Rendering.PrismObject;
 import Objects.Rendering.TypePolygon;
 import Objects.SceneObject;
 
@@ -17,7 +18,9 @@ public class Display extends Canvas {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
 
-    CubicPrism cube = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 100, 100, 1000);
+    CubicPrism cube = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 100, 100, 100);
+    PrismObject prism = new PrismObject(cube, 200, 200, 0);
+
 
     public Display(Scene parent){
         this.parent = parent;
@@ -65,7 +68,8 @@ public class Display extends Canvas {
             object.skeleton.render(g);
         }
 
-        cube.render(g);
+        prism.render(g);
+        cube.rotate(0,0,0);
 
         g.dispose();
         bs.show();

@@ -1,6 +1,8 @@
 package Objects.Rendering.Prefab;
 
+import Objects.Position;
 import Objects.Rendering.TypePolygon;
+import Objects.Rendering.Vertex;
 
 import java.awt.*;
 
@@ -30,5 +32,21 @@ public abstract class TypePrism {
     public void render(Graphics g){
         for (TypePolygon poly : polygons)
             poly.render(g);
+    }
+
+    public void render(Graphics g, Position pos){
+        for (TypePolygon poly : polygons)
+            poly.render(g, pos);
+    }
+
+    public void rotate(double xDegree, double yDegree, double zDegree){
+        for (TypePolygon poly : polygons){
+            poly.rotate(xDegree, yDegree, zDegree);
+        }
+        this.sortPolygons();
+    }
+
+    private void sortPolygons(){
+
     }
 }

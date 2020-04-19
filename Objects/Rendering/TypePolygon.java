@@ -1,5 +1,7 @@
 package Objects.Rendering;
 
+import Objects.Position;
+
 import java.awt.*;
 
 /**
@@ -35,6 +37,24 @@ public abstract class TypePolygon {
         }
         g.setColor(color);
         g.fillPolygon(poly);
+    }
+
+    public void render(Graphics g, Position pos){
+        Polygon poly = new Polygon();
+        for (int i = 0; i < vertices.length; i++){
+            Point p = VertexParser.convert(Vertex.vertexFromPos(vertices[i], pos));
+            poly.addPoint(p.x, p.y);
+        }
+        g.setColor(color);
+        g.fillPolygon(poly);
+    }
+
+    public void rotate(double xDegree, double yDegree, double zDegree){
+        for (Vertex vertex : vertices){
+            VertexParser.rotateAxisX(vertex, xDegree);
+            VertexParser.rotateAxisY(vertex, yDegree);
+            VertexParser.rotateAxisZ(vertex, zDegree);
+        }
     }
 
     public void setColor(Color color){
