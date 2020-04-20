@@ -43,13 +43,13 @@ public class Display extends Canvas {
         this.frame.setResizable(false);
         this.frame.setVisible(true);
 
-        Scene.objects.get(0).transform.position = new Position(0,100,-1000);
-        Scene.objects.get(0).skeleton.prism = prism;
-        Scene.objects.get(0).transform.acceleration.x = 1;
+        Scene.objects.get(0).transform.position = new Position(0,100,0);
+        Scene.objects.get(0).skeleton.setPrism(prism);
+        Scene.objects.get(0).transform.velocity.x = 30;
 
         Scene.objects.get(1).transform.position = new Position(0,-100,0);
-        Scene.objects.get(1).skeleton.prism = prism;
-        Scene.objects.get(1).transform.appliquerForce(new Force(10,0,0));
+        Scene.objects.get(1).skeleton.setPrism(prism2);
+        Scene.objects.get(1).transform.velocity.x = 5;
         start();
     }
 

@@ -15,6 +15,15 @@ public class Scene {
     public Display display;
     public boolean running;
     public int fps = 0;
+
+    public Scene(){
+
+    }
+
+    public Scene(ArrayList<SceneObject> objects){
+        Scene.objects.addAll(objects);
+    }
+
     /**
      * Ajouter un objet à la scène
      * @param object SceneObject à ajouter

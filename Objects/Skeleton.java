@@ -20,6 +20,16 @@ public class Skeleton extends Component {
     }
 
     public void render(Graphics g){
-        prism.render(g, parent.transform.position);
+        if (prism != null) {
+            if (prism.pos == null) {
+                prism.pos = parent.transform.position;
+            }
+            prism.render(g);
+        }
+    }
+
+    public void setPrism(PrismObject prism){
+        this.prism = prism;
+        prism.pos = parent.transform.position;
     }
 }
