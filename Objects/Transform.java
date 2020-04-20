@@ -46,7 +46,7 @@ public class Transform extends Component {
     }
 
     private void appliquerVelocity(){
-        position.appliquerVecteur(new Velocity(velocity).scale(PhysicEngine.PIXEL_PER_METER));
+        position.appliquerVecteur(new Velocity(velocity).scale(PhysicEngine.PIXEL_PER_METER/PhysicEngine.CONSTANT_FRAME));
     }
 
     public void appliquerForce(Force... forces){
