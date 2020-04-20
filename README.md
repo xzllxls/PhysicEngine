@@ -20,7 +20,7 @@ Contain all non abstract class needed to establish the base of the engine
 Contain (I hope) all your component script
 
 ## Global core technologies
-* Fixed frame per second update (unstable with physics)
+* Fixed frame per second update
 * Latency reduction per second (if your computer isn't good enough)
 * Physic integration (of course)
 * Graphic integration (java.awt)
