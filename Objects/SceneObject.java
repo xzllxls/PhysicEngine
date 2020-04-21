@@ -6,7 +6,8 @@ import Engine.Script;
 import java.util.ArrayList;
 
 /**
- * Objet présent dans une scène
+ * <p lang="en">An object in a scene</p>
+ * <p lang="fr">Objet présent dans une scène</p>
  * @author Linden Brochu
  */
 public class SceneObject {
@@ -17,7 +18,8 @@ public class SceneObject {
     public double mass; //mass de l'objet
 
     /**
-     * Instancier un objet de scène
+     * <p lang="en">Instantiate a scene's object</p>
+     * <p lang="fr">Instancier un objet de scène</p>
      * @param mass Masse de l'objet
      */
     public SceneObject(double mass){
@@ -26,14 +28,16 @@ public class SceneObject {
     }
 
     /**
-     * Permet de lier l'objet à la scène actuelle
+     * <p lang="en">Link the object to the actual scene</p>
+     * <p lang="fr">Lier l'objet à la scène actuelle</p>
      */
     private void ajouterScene(){
         Scene.ajouterObject(this);
     }
 
     /**
-     * Permet d'ajouter un script sur l'objet
+     * <p lang="en">Add a script to the object</p>
+     * <p lang="fr">Ajouter un script sur l'objet</p>
      * @param script Script à ajouter
      */
     public void addScript(Script script){

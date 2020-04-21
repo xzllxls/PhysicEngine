@@ -1,7 +1,8 @@
 package Engine;
 
 /**
- * Coordonnée en 3 dimension
+ * <p lang="en">3 dimension coordinates</p>
+ * <p lang="fr">Coordonnée en 3 dimension</p>
  * @author Linden Brochu
  */
 public abstract class TypePoint {
@@ -10,7 +11,8 @@ public abstract class TypePoint {
     public double z; //Position z
 
     /**
-     * Instancier un point à des coordonnées
+     * <p lang="en">Instantiate a point on coordinates</p>
+     * <p lang="fr">Instancier un point à des coordonnées</p>
      * @param x Coordonnée en x
      * @param y Coordonnée en y
      * @param z Coordonnée en z
@@ -22,7 +24,8 @@ public abstract class TypePoint {
     }
 
     /**
-     * Instancier un point en (0,0,0)
+     * <p lang="en">Instantiate a point on (0,0,0)</p>
+     * <p lang="fr">Instancier un point en (0,0,0)</p>
      */
     public TypePoint(){
         x = 0;
@@ -31,7 +34,8 @@ public abstract class TypePoint {
     }
 
     /**
-     * Déplacer un point de point de x, y et z unités
+     * <p lang="en">Move a point of x, y and z unite</p>
+     * <p lang="fr">Déplacer un point de point de x, y et z unités</p>
      * @param x Déplacement en x
      * @param y Déplacement en y
      * @param z Déplacement en z
@@ -45,7 +49,8 @@ public abstract class TypePoint {
     }
 
     /**
-     * Changer la position d'un point
+     * <p lang="en">Change point coordinates</p>
+     * <p lang="fr">Changer la position d'un point</p>
      * @param x Position absolue x
      * @param y Position absolue y
      * @param z Position absolue z
@@ -59,7 +64,8 @@ public abstract class TypePoint {
     }
 
     /**
-     * Applique un vecteur au point
+     * <p lang="en">Applied a vector to the point</p>
+     * <p lang="fr">Applique un vecteur au point</p>
      * @param vector Vecteur à appliquer
      * @return Le point déplacé
      */

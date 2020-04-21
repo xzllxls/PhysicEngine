@@ -3,14 +3,16 @@ package Engine;
 import Objects.SceneObject;
 
 /**
- * Composante d'un SceneObject
+ * <p lang="en">SceneObject's component</p>
+ * <p lang="fr">Composante d'un SceneObject</p>
  * @author Linden Brochu
  */
 public abstract class Component {
     protected SceneObject parent; //SceneObject parent
 
     /**
-     * Instancier une composante
+     * <p lang="en">Instantiate a component</p>
+     * <p lang="fr">Instancier une composante</p>
      * @param parent SceneObject parent
      */
     public Component(SceneObject parent){

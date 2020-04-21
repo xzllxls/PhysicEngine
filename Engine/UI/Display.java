@@ -1,7 +1,6 @@
 package Engine.UI;
 
 import Engine.Scene;
-import Objects.Force;
 import Objects.Position;
 import Objects.Rendering.Prefab.CubicPrism;
 import Objects.Rendering.PrismObject;
@@ -11,8 +10,12 @@ import Objects.SceneObject;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.Collections;
 
+/**
+ * <p lang="en">UI of the render zone</p>
+ * <p lang="fr">UI de la zone de rendu</p>
+ * @author Linden Brochu
+ */
 public class Display extends Canvas {
     public Scene parent;
 
@@ -27,7 +30,11 @@ public class Display extends Canvas {
     CubicPrism cube2 = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 50, 100, 100);
     PrismObject prism2 = new PrismObject(cube2, 0, 0, 0);
 
-
+    /**
+     * <p lang="en">Instantiate a display</p>
+     * <p lang="fr">Instancier un display</p>
+     * @param parent Scene parent
+     */
     public Display(Scene parent){
         this.parent = parent;
         this.frame = new JFrame();
@@ -49,23 +56,39 @@ public class Display extends Canvas {
 
         Scene.objects.get(1).transform.position = new Position(0,-100,0);
         Scene.objects.get(1).skeleton.setPrism(prism2);
-        Scene.objects.get(1).transform.velocity.x = 5;
+        Scene.objects.get(1).transform.acceleration.x = 1;
         start();
     }
 
+    /**
+     * <p lang="en">Start a scene</p>
+     * <p lang="fr">Démarre une scène</p>
+     */
     public synchronized void start(){
         parent.running = true;
     }
 
+    /**
+     * <p lang="en">Stop a scene</p>
+     * <p lang="fr">Arrête une scène</p>
+     */
     public synchronized void stop(){
         parent.running = false;
     }
 
+    /**
+     * <p lang="en">Start the render</p>
+     * <p lang="fr">Démarre le rendu</p>
+     */
     public void runUpdate(){
         this.frame.setTitle(title + " " + parent.fps);
         render();
     }
 
+    /**
+     * <p lang="en">Render the scene's SceneObject</p>
+     * <p lang="fr">Paint les les SceneObject</p>
+     */
     private void render(){
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null){
@@ -81,10 +104,7 @@ public class Display extends Canvas {
             object.skeleton.render(g);
         }
 
-//        prism.render(g);
-//        cube.rotate(0,0,0);
-
-//        System.out.println(Scene.objects.get(0).transform.position.x);
+        cube.rotate(0,0,0);
 
         g.dispose();
         bs.show();

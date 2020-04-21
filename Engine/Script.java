@@ -3,12 +3,15 @@ package Engine;
 import Objects.SceneObject;
 
 /**
- * Script personnalisé de l'utilisateur
+ * <p lang="en">Personalised user script</p>
+ * <p lang="fr">Script personnalisé de l'utilisateur</p>
  * @author Linden Brochu
  */
 public abstract class Script extends Component {
+
     /**
-     * Instancier un nouveau script
+     * <p lang="en">Instantiate a new script</p>
+     * <p lang="fr">Instancier un nouveau script</p>
      * @param parent SceneObject auquel le script est rataché
      */
     public Script(SceneObject parent){
@@ -18,12 +21,14 @@ public abstract class Script extends Component {
     }
 
     /**
-     * Initialiser le script
+     * @en Initialize the script
+     * @fr Initialiser le script
      */
     public abstract void start();
 
     /**
-     * Sécance de mise à jour du script
+     * <p lang="en">Script's update sequence</p>
+     * <p lang="en">Sécance de mise à jour du script</p>
      */
     public abstract void update();
 }

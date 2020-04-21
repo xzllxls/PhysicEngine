@@ -7,7 +7,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 /**
- * Scène de l'application
+ * <p lang="en">App scene</p>
+ * <p lang="fr">Scène de l'application</p>
  * @author Linden Brochu
  */
 public class Scene {
@@ -16,16 +17,9 @@ public class Scene {
     public boolean running;
     public int fps = 0;
 
-    public Scene(){
-
-    }
-
-    public Scene(ArrayList<SceneObject> objects){
-        Scene.objects.addAll(objects);
-    }
-
     /**
-     * Ajouter un objet à la scène
+     * <p lang="en">Add an object to the scene</p>
+     * <p lang="fr">Ajouter un objet à la scène</p>
      * @param object SceneObject à ajouter
      */
     public static void ajouterObject(SceneObject object){
@@ -33,7 +27,8 @@ public class Scene {
     }
 
     /**
-     * Initialise la scène
+     * <p lang="en">Initialize the scene</p>
+     * <p lang="fr">Initialise la scène</p>
      */
     public void start(){
         for (SceneObject elem : objects) {
@@ -49,8 +44,9 @@ public class Scene {
     }
 
     /**
-     * Démarre la sécance de mise à jour de la scène
-     * @throws InterruptedException
+     * <p lang="en">Start scene's update sequence</p>
+     * <p lang="fr">Démarre la sécance de mise à jour de la scène</p>
+     * @throws InterruptedException Exception
      */
     private void updateStart() throws InterruptedException {
         long frameStart;
@@ -83,7 +79,8 @@ public class Scene {
     }
 
     /**
-     * Sécance de mise à jour de la scène
+     * <p lang="en">Scene's update sequence</p>
+     * <p lang="fr">Sécance de mise à jour de la scène</p>
      */
     private void update(){
         for (SceneObject elem : objects) {
@@ -94,4 +91,11 @@ public class Scene {
         display.runUpdate();
     }
 
+    /**
+     * <p lang="en">Reinitialize the scene</p>
+     * <p lang="fr">Réinitialise la scène</p>
+     */
+    public static void clearScene(){
+        objects.clear();
+    }
 }

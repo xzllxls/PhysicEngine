@@ -3,13 +3,15 @@ package Objects;
 import Engine.Vector;
 
 /**
- * Vecteur de vitesse
+ * <p lang="en">Velocity vector</p>
+ * <p lang="fr">Vecteur de vitesse</p>
  * @author Linden Brochu
  */
 public class Velocity extends Vector {
 
     /**
-     * Instancier un vitesse
+     * <p lang="en">Instantiate a velocity</p>
+     * <p lang="fr">Instancier un vitesse</p>
      * @param x Unité en i
      * @param y Unité en j
      * @param z Unité en k
@@ -19,7 +21,8 @@ public class Velocity extends Vector {
     }
 
     /**
-     * Instancier une copie d'une vitesse
+     * <p lang="en">Instantiate a copy of a velocity</p>
+     * <p lang="fr">Instancier une copie d'une vitesse</p>
      * @param velocity Vitesse à copier
      */
     public Velocity(Velocity velocity){
@@ -27,27 +30,10 @@ public class Velocity extends Vector {
     }
 
     /**
-     * Instancier un vitesse nulle
+     * <p lang="en">Instantiate a null velocity</p>
+     * <p lang="fr">Instancier un vitesse nulle</p>
      */
     public Velocity(){
         super();
     }
-
-    /**
-     * Créer une copie de la vélocité, puis retourne sa valeur à l'exposant
-     * @param puissance Exposant
-     * @return Copie de la vélocité
-     */
-    @Deprecated
-    public Velocity pow(int puissance){
-        Velocity velocity = new Velocity(this);
-        for (int i = 1; i < puissance; i++) {
-            velocity.x *= Math.abs(velocity.x);
-            velocity.y *= Math.abs(velocity.y);
-            velocity.z *= Math.abs(velocity.z);
-        }
-        velocity.setLinearDistance();
-        return velocity;
-    }
-
 }

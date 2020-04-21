@@ -3,6 +3,7 @@ package Engine;
 /**
  * @author Linden Brochu
  */
+@Deprecated
 public abstract class Grid {
     double[] abscisse = new double[3];
     double[] ordonne = new double[3];
