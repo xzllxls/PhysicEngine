@@ -1,5 +1,6 @@
 package Engine;
 
+import Engine.Abstract.Camera;
 import Engine.UI.Display;
 import Objects.SceneObject;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Scene {
     public static ArrayList<SceneObject> objects = new ArrayList<>(); //Liste de tout les objets de la scène
+    public static Camera camera = new Camera();
     public Display display;
     public boolean running;
     public int fps = 0;

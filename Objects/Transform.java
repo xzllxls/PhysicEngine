@@ -12,6 +12,7 @@ import Objects.Modules.Transform.CollisionManager;
  */
 public class Transform extends Component {
     public Position position = new Position(0,0,0);
+    public Rotation rotation = new Rotation(0,0,0);
     public Velocity velocity = new Velocity(0,0,0);
     public Acceleration acceleration = new Acceleration(0,0,0);
     public CollisionManager collisionManager;
@@ -37,6 +38,24 @@ public class Transform extends Component {
     }
 
     /**
+     * <p lang="en">Rotate the modal</p>
+     * <p lang="fr">Rotationne le model</p>
+     * @param x Degree x
+     * @param y Degree y
+     * @param z Degree z
+     */
+    public void rotate(double x, double y, double z){
+        double tempX = rotation.x + x;
+        double tempY = rotation.y + y;
+        double tempZ = rotation.z + z;
+        if (parent.skeleton.prism != null){
+            rotation.setRotation(x, y, z);
+            parent.skeleton.prism.rotate(false);
+        }
+        rotation.setRotation(tempX, tempY, tempZ);
+    }
+
+    /**
      * <p lang="en">Move the modal</p>
      * <p lang="fr">Déplace le model</p>
      * @param vector Vecteur de déplacement
@@ -56,6 +75,24 @@ public class Transform extends Component {
         position.x = x;
         position.y = y;
         position.z = z;
+    }
+
+    /**
+     * <p lang="en">Absolute change of rotation</p>
+     * <p lang="fr">Changement absolu de rotation</p>
+     * @param x Rotation x
+     * @param y Rotation y
+     * @param z Rotation z
+     */
+    public void setRotation(double x, double y, double z){
+        if (parent.skeleton.prism != null){
+            rotation.setRotation(-rotation.x, -rotation.y, -rotation.z);
+            parent.skeleton.prism.rotate(true);
+        }
+        rotation.setRotation(x, y, z);
+        if (parent.skeleton.prism != null){
+            parent.skeleton.prism.rotate(true);
+        }
     }
 
     /**
@@ -84,7 +121,7 @@ public class Transform extends Component {
      * <p lang="fr">Appliquer la vitesse sur la position</p>
      */
     private void appliquerVelocity(){
-        position.appliquerVecteur(new Velocity(velocity).scale(PhysicEngine.PIXEL_PER_METER/PhysicEngine.CONSTANT_FRAME));
+        position.appliquerVecteur(new Velocity(velocity).scale(1.0/PhysicEngine.CONSTANT_FRAME));
     }
 
     /**

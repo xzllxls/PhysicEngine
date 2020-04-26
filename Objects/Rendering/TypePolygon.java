@@ -3,6 +3,8 @@ package Objects.Rendering;
 import Objects.Position;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * <p lang="en">3 dimensions polygon</p>
@@ -101,5 +103,40 @@ public abstract class TypePolygon {
      */
     public void setColor(Color color){
         this.color = color;
+    }
+
+    /**
+     * <p lang="en">Get the average depth</p>
+     * <p lang="fr">Calcul la profondeur moyenne</p>
+     * @return Profondeur moyenne
+     */
+    public double averageDepth(){
+        double sum = 0;
+        for (Vertex vertex : vertices)
+            sum += vertex.z;
+        return sum / vertices.length;
+    }
+
+    /**
+     * <p lang="en">Sort the polygon</p>
+     * <p lang="fr">Trie les polygones</p>
+     * @param polygons Liste de polygones
+     * @return Liste de polygones triée
+     */
+    public static TypePolygon[] sortPolygons(TypePolygon[] polygons){
+        ArrayList<TypePolygon> list = new ArrayList<>(Arrays.asList(polygons));
+
+        list.sort((o1, o2) -> {
+            double diff = o2.averageDepth() - o1.averageDepth();
+            if (diff > 0)
+                return 1;
+            else if (diff < 0)
+                return -1;
+            else return 0;
+        });
+        for (int i = 0; i < polygons.length; i++){
+            polygons[i] = list.get(i);
+        }
+        return polygons;
     }
 }

@@ -3,6 +3,7 @@ package Objects.Rendering.Prefab;
 import Engine.PhysicEngine;
 import Objects.Position;
 import Objects.Rendering.TypePolygon;
+import Objects.Rotation;
 
 import java.awt.*;
 
@@ -81,7 +82,20 @@ public abstract class TypePrism {
         this.sortPolygons();
     }
 
-    private void sortPolygons(){
+    /**
+     * <p lang="en">Do an absolute rotation</p>
+     * <p lang="fr">Effectuer une rotation absolue</p>
+     * @param rot Rotation
+     */
+    public void rotate(Rotation rot){
+        rotate(rot.x * PhysicEngine.CONSTANT_FRAME / 3, rot.y * PhysicEngine.CONSTANT_FRAME / 3, rot.z * PhysicEngine.CONSTANT_FRAME / 3);
+    }
 
+    /**
+     * <p lang="en">Sort the polygon with depth</p>
+     * <p lang="fr">Trie les polygones en fonction de leur profondeur</p>
+     */
+    private void sortPolygons(){
+        TypePolygon.sortPolygons(polygons);
     }
 }

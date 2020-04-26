@@ -1,5 +1,7 @@
 package Objects.Rendering;
 
+import Engine.PhysicEngine;
+import Engine.Scene;
 import Engine.TypePoint;
 import Objects.Position;
 
@@ -22,19 +24,6 @@ public class Vertex extends TypePoint {
     }
 
     /**
-     * <p lang="en">Modify a vertex from 3 coordinates</p>
-     * <p lang="fr">Modifier un vertex avec 3 coordonnées</p>
-     * @param vertex Vertex
-     * @param x Coordonnée x
-     * @param y Coordonnée y
-     * @param z Coordonnée z
-     * @return Vertex
-     */
-    public static Vertex vertexFromPos(Vertex vertex, double x, double y, double z){
-        return new Vertex(vertex.x + x, vertex.y + y, vertex.z + z);
-    }
-
-    /**
      * <p lang="en">Modify a vertex from a position</p>
      * <p lang="fr">Modifier un vertex avec une position</p>
      * @param vertex Vertex
@@ -42,7 +31,7 @@ public class Vertex extends TypePoint {
      * @return Vertex
      */
     public static Vertex vertexFromPos(Vertex vertex, Position pos){
-        return new Vertex(vertex.x + pos.x, vertex.y + pos.y, vertex.z + pos.z);
+        return new Vertex(vertex.x + (pos.x + Scene.camera.pos.x)  * PhysicEngine.PIXEL_PER_METER, vertex.y + (pos.y + Scene.camera.pos.y) * PhysicEngine.PIXEL_PER_METER, vertex.z + (pos.z + Scene.camera.pos.z) * PhysicEngine.PIXEL_PER_METER);
     }
 
 }

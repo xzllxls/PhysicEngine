@@ -2,6 +2,7 @@ package Objects;
 
 import Engine.Scene;
 import Engine.Script;
+import Engine.TypeObject;
 
 import java.util.ArrayList;
 
@@ -10,11 +11,10 @@ import java.util.ArrayList;
  * <p lang="fr">Objet présent dans une scène</p>
  * @author Linden Brochu
  */
-public class SceneObject {
+public class SceneObject extends TypeObject{
     public ArrayList<Script> scripts = new ArrayList<>(); //Liste de script
     public Transform transform = new Transform(this); //Composante transform de l'objet
     public Skeleton skeleton = new Skeleton(this); //Squelette et mesh de l'objet
-
     public double mass; //mass de l'objet
 
     /**

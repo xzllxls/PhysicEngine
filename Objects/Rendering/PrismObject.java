@@ -3,6 +3,7 @@ package Objects.Rendering;
 import Engine.TypeObject;
 import Objects.Position;
 import Objects.Rendering.Prefab.TypePrism;
+import Objects.Rotation;
 
 import java.awt.*;
 
@@ -14,6 +15,7 @@ import java.awt.*;
 public class PrismObject extends TypeObject {
     public TypePrism prism;
     public Position pos;
+    public Rotation rot;
 
     /**
      * <p lang="en">Instantiate a prism object</p>
@@ -56,5 +58,16 @@ public class PrismObject extends TypeObject {
      */
     public void render(Graphics g, Position pos){
         prism.render(g, pos);
+    }
+
+    /**
+     * <p lang="en">Rotate the prism</p>
+     * <p lang="fr">Rotation le prisme</p>
+     * @param absRotation Determine si la rotation est absolue
+     */
+    public void rotate(boolean absRotation){
+        if (absRotation)
+            prism.rotate(rot);
+        else prism.rotate(rot.x, rot.y, rot.z);
     }
 }

@@ -21,6 +21,7 @@ public class SceneParser {
     public static void loadScene(String filename) throws IOException{
         if (!checkFile(filename))
             throw new FileNotFoundException(filename + " n'existe pas");
+
     }
 
     /**

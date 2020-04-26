@@ -1,7 +1,9 @@
 package Objects.Rendering;
 
 
+import Engine.Abstract.Camera;
 import Engine.PhysicEngine;
+import Engine.Scene;
 import Engine.UI.Display;
 
 import java.awt.*;
@@ -25,7 +27,9 @@ public class VertexParser {
         double x = vertex.x * scale;
         double y = vertex.y * scale;
         double depth = vertex.z * scale;
-        double[] newVal = scale(x,y,depth);
+        double[] newVal = {y, x};
+        if (Scene.camera.type == Camera.CameraType.Perspective)
+            newVal = scale(x,y,depth);
         int x2 = (int) (Display.WIDTH / 2 + newVal[1]);
         int y2 = (int) (Display.HEIGHT / 2 - newVal[0]);
 
@@ -74,10 +78,10 @@ public class VertexParser {
      */
     public static void rotateAxisY(Vertex vertex, double degrees){
         double radius = Math.sqrt(vertex.x * vertex.x + vertex.z * vertex.z);
-        double theta = Math.atan2(vertex.z, vertex.x);
+        double theta = Math.atan2(vertex.x, vertex.z);
         theta += ((2 * PhysicEngine.PI) / 360) * degrees;
-        vertex.x = radius * Math.cos(theta);
-        vertex.z = radius * Math.sin(theta);
+        vertex.x = radius * Math.sin(theta);
+        vertex.z = radius * Math.cos(theta);
     }
 
     /**
@@ -88,10 +92,10 @@ public class VertexParser {
      */
     public static void rotateAxisZ(Vertex vertex, double degrees){
         double radius = Math.sqrt(vertex.x * vertex.x + vertex.y * vertex.y);
-        double theta = Math.atan2(vertex.y, vertex.x);
+        double theta = Math.atan2(vertex.x, vertex.y);
         theta += ((2 * PhysicEngine.PI) / 360) * degrees;
-        vertex.x = radius * Math.cos(theta);
-        vertex.y = radius * Math.sin(theta);
+        vertex.x = radius * Math.sin(theta);
+        vertex.y = radius * Math.cos(theta);
     }
 
 }

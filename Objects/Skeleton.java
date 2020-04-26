@@ -40,6 +40,9 @@ public class Skeleton extends Component {
             if (prism.pos == null) {
                 prism.pos = parent.transform.position;
             }
+            if (prism.rot == null) {
+                prism.rot = parent.transform.rotation;
+            }
             prism.render(g);
         }
     }
@@ -52,5 +55,6 @@ public class Skeleton extends Component {
     public void setPrism(PrismObject prism){
         this.prism = prism;
         prism.pos = parent.transform.position;
+        prism.rot = parent.transform.rotation;
     }
 }
