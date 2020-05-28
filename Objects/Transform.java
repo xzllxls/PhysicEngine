@@ -3,7 +3,6 @@ package Objects;
 import Engine.Component;
 import Engine.PhysicEngine;
 import Engine.Vector;
-import Objects.Modules.Transform.CollisionManager;
 
 /**
  * <p lang="en">Transform component</p>
@@ -14,8 +13,9 @@ public class Transform extends Component {
     public Position position = new Position(0,0,0);
     public Rotation rotation = new Rotation(0,0,0);
     public Velocity velocity = new Velocity(0,0,0);
+    public Velocity rotationVelocity = new Velocity(0,0,0);
     public Acceleration acceleration = new Acceleration(0,0,0);
-    public CollisionManager collisionManager;
+    public Acceleration rotationAcceleration = new Acceleration(0,0,0);
 
     /**
      * <p lang="en">Instantiate a transform component</p>
@@ -38,6 +38,15 @@ public class Transform extends Component {
     }
 
     /**
+     * <p lang="en">Move the modal</p>
+     * <p lang="fr">Déplace le model</p>
+     * @param vector Vecteur de déplacement
+     */
+    public void translate(Vector vector){
+        position.appliquerVecteur(vector);
+    }
+
+    /**
      * <p lang="en">Rotate the modal</p>
      * <p lang="fr">Rotationne le model</p>
      * @param x Degree x
@@ -55,13 +64,8 @@ public class Transform extends Component {
         rotation.setRotation(tempX, tempY, tempZ);
     }
 
-    /**
-     * <p lang="en">Move the modal</p>
-     * <p lang="fr">Déplace le model</p>
-     * @param vector Vecteur de déplacement
-     */
-    public void translate(Vector vector){
-        position.move(vector.x, vector.y, vector.z);
+    public void rotate(Vector vector){
+        rotate(vector.x, vector.y, vector.z);
     }
 
     /**
@@ -111,9 +115,17 @@ public class Transform extends Component {
     private void appliquerAcceleration(){
         Acceleration acc = new Acceleration(acceleration);
         acc.appliquerVecteur(new Force(PhysicEngine.GRAVITY_VECTOR));
-        acc.appliquerVecteur((new Force(PhysicEngine.AIR_RESISTANCE_VECTOR)).scale(velocity));
-        velocity.appliquerVecteur(acc.scale(1.0/PhysicEngine.CONSTANT_FRAME));
-        velocity.roundMin(PhysicEngine.VECTOR_MIN_LIMIT);
+        acc.appliquerVecteur((new Force(PhysicEngine.AIR_RESISTANCE_VECTOR)).scale(velocity).exp(1,2));
+        if (acc.linearDistance != 0) {
+            velocity.appliquerVecteur(acc.scale(1.0 / PhysicEngine.CONSTANT_FRAME));
+            velocity.roundMin(PhysicEngine.VECTOR_MIN_LIMIT);
+        }
+        acc = new Acceleration(rotationAcceleration);
+        acc.appliquerVecteur((new Force(PhysicEngine.AIR_RESISTANCE_VECTOR)).scale(rotationVelocity).exp(1,2));
+        if (acc.linearDistance != 0) {
+            rotationVelocity.appliquerVecteur(acc.scale(1.0 / PhysicEngine.CONSTANT_FRAME));
+            rotationVelocity.roundMin(PhysicEngine.VECTOR_MIN_LIMIT);
+        }
     }
 
     /**
@@ -121,7 +133,11 @@ public class Transform extends Component {
      * <p lang="fr">Appliquer la vitesse sur la position</p>
      */
     private void appliquerVelocity(){
-        position.appliquerVecteur(new Velocity(velocity).scale(1.0/PhysicEngine.CONSTANT_FRAME));
+        System.out.println(velocity.y);
+        if (velocity.linearDistance != 0)
+            translate(new Velocity(velocity).scale(1.0/PhysicEngine.CONSTANT_FRAME));
+        if (rotationVelocity.linearDistance != 0)
+            rotate(new Velocity(rotationVelocity));
     }
 
     /**

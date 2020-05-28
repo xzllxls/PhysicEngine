@@ -18,9 +18,11 @@ public class SceneParser {
      * @param filename Nom du fichier
      * @throws IOException Existance du fichier
      */
-    public static void loadScene(String filename) throws IOException{
-        if (!checkFile(filename))
-            throw new FileNotFoundException(filename + " n'existe pas");
+    public static Scene loadScene(String filename) /*throws IOException*/{
+        Scene.objects.clear();
+        return new Scene();
+//        if (!checkFile(filename))
+//            throw new FileNotFoundException(filename + " n'existe pas");
 
     }
 

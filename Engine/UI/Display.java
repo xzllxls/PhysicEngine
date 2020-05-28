@@ -1,11 +1,6 @@
 package Engine.UI;
 
 import Engine.Scene;
-import Objects.Position;
-import Objects.Rendering.Prefab.CubicPrism;
-import Objects.Rendering.PrismObject;
-import Objects.Rendering.TypePolygon;
-import Objects.Rotation;
 import Objects.SceneObject;
 
 import javax.swing.*;
@@ -24,12 +19,6 @@ public class Display extends Canvas {
     private static final String title = "PhysicEngine";
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
-
-    CubicPrism cube = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 100, 100, 100);
-    PrismObject prism = new PrismObject(cube, 0, 0, 0);
-
-//    CubicPrism cube2 = new CubicPrism(Color.WHITE, TypePolygon.Surface.Solid, 100, 100, 100);
-//    PrismObject prism2 = new PrismObject(cube2, 0, 0, 0);
 
     /**
      * <p lang="en">Instantiate a display</p>
@@ -51,15 +40,6 @@ public class Display extends Canvas {
         this.frame.setResizable(false);
         this.frame.setVisible(true);
 
-        Scene.objects.get(0).skeleton.setPrism(prism);
-        Scene.objects.get(0).transform.setPosition(0,0,0);
-        Scene.objects.get(0).transform.setRotation(30,0,0);
-        Scene.objects.get(0).transform.velocity.x = 0;
-
-
-//        Scene.objects.get(1).transform.position = new Position(0,0,0);
-//        Scene.objects.get(1).skeleton.setPrism(prism2);
-//        Scene.objects.get(1).transform.velocity.y = 0;
         start();
     }
 
@@ -106,8 +86,6 @@ public class Display extends Canvas {
         for (SceneObject object : Scene.objects){
             object.skeleton.render(g);
         }
-
-        Scene.objects.get(0).transform.rotate(0,0,0);
 
         g.dispose();
         bs.show();

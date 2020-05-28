@@ -1,6 +1,8 @@
 package Engine;
 
 import Engine.Abstract.Camera;
+import Engine.Event.Exception.ColliderException;
+import Engine.Event.Exception.GameException;
 import Engine.UI.Display;
 import Objects.SceneObject;
 
@@ -40,7 +42,7 @@ public class Scene {
         display = new Display(this);
         try {
             updateStart();
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | GameException e) {
             e.printStackTrace();
         }
     }
@@ -50,7 +52,7 @@ public class Scene {
      * <p lang="fr">Démarre la sécance de mise à jour de la scène</p>
      * @throws InterruptedException Exception
      */
-    private void updateStart() throws InterruptedException {
+    private void updateStart() throws InterruptedException, GameException {
         long frameStart;
         long frameEnd;
         long frameTime;
@@ -84,11 +86,9 @@ public class Scene {
      * <p lang="en">Scene's update sequence</p>
      * <p lang="fr">Sécance de mise à jour de la scène</p>
      */
-    private void update(){
+    private void update() throws GameException {
         for (SceneObject elem : objects) {
-            for (Script script : elem.scripts)
-                script.update();
-            elem.transform.appliquerTransform();
+            elem.update();
         }
         display.runUpdate();
     }

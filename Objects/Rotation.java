@@ -25,4 +25,11 @@ public class Rotation {
         this.y = y;
         this.z = z;
     }
+
+    public Rotation rotate(double x, double y, double z){
+        this.x += x;
+        this.y += y;
+        this.z += z;
+        return this;
+    }
 }

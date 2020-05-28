@@ -51,8 +51,8 @@ public class VertexParser {
         double localScale = Math.abs(1400/(depth2 + 1400));
         dist *= localScale;
         return new double[]{
-            dist * Math.cos(theta),
-            dist * Math.sin(theta)
+            y + (y - dist * Math.cos(theta)) * 2,
+            x + (x - dist * Math.sin(theta)) * 2
         };
     }
 

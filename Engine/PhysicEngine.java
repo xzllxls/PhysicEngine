@@ -8,9 +8,9 @@ import Objects.Force;
  * @author Linden Brochu
  */
 public class PhysicEngine {
-    public static final double GRAVITY = 0; //linearValue
-    public static final double AIR_RESISTANCE = -1.0; //linearValue
-    public static final int CONSTANT_FRAME = 30;
+    public static final double GRAVITY = -10; //linearValue
+    public static final double AIR_RESISTANCE = -1; //linearValue
+    public static final int CONSTANT_FRAME = 60;
     public static final double PI = 3.141592653589793; //+/- 1cm de perte par milliers de km
     public static final double PIXEL_PER_METER = 10; //Nb pixel pour former 1 mètre
     public static final double VECTOR_MIN_LIMIT = 0.01; //Vitesse minimal avant 0m/s (ex 0.01 -> 1 cm/s) (sera remplacé par la camera)

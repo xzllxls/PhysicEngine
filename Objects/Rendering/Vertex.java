@@ -31,7 +31,7 @@ public class Vertex extends TypePoint {
      * @return Vertex
      */
     public static Vertex vertexFromPos(Vertex vertex, Position pos){
-        return new Vertex(vertex.x + (pos.x + Scene.camera.pos.x)  * PhysicEngine.PIXEL_PER_METER, vertex.y + (pos.y + Scene.camera.pos.y) * PhysicEngine.PIXEL_PER_METER, vertex.z + (pos.z + Scene.camera.pos.z) * PhysicEngine.PIXEL_PER_METER);
+        return new Vertex((vertex.x + pos.x - Scene.camera.pos.x) * PhysicEngine.PIXEL_PER_METER, (vertex.y + pos.y - Scene.camera.pos.y) * PhysicEngine.PIXEL_PER_METER, (vertex.z + pos.z - Scene.camera.pos.z) * PhysicEngine.PIXEL_PER_METER);
     }
 
 }

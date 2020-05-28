@@ -184,4 +184,27 @@ public abstract class Vector {
             this.z = 0;
         return this;
     }
+
+    /**
+     * <p lang="en">Applied a norm to the vector</p>
+     * <p lang="fr">Applique une norme au vecteur</p>
+     * @param norm Norme à appliquer
+     * @return Le vecteur normalisé
+     */
+    public Vector normalize(double norm){
+        if (this.linearDistance != 0) {
+            double ratio = norm / this.linearDistance;
+            this.x *= ratio;
+            this.y *= ratio;
+            this.z *= ratio;
+        }
+        return this;
+    }
+
+    public Vector exp(double topExp, double bottomExp){
+        this.x = Math.pow(this.x, topExp / bottomExp);
+        this.y = Math.pow(this.y, topExp / bottomExp);
+        this.z = Math.pow(this.z, topExp / bottomExp);
+        return this;
+    }
 }

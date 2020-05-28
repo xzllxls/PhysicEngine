@@ -1,8 +1,11 @@
 package Objects;
 
+import Engine.Event.Exception.ColliderException;
 import Engine.Scene;
 import Engine.Script;
 import Engine.TypeObject;
+import Objects.Modules.Transform.CollisionManager;
+import Objects.Modules.Transform.CompoundCollider;
 
 import java.util.ArrayList;
 
@@ -16,6 +19,7 @@ public class SceneObject extends TypeObject{
     public Transform transform = new Transform(this); //Composante transform de l'objet
     public Skeleton skeleton = new Skeleton(this); //Squelette et mesh de l'objet
     public double mass; //mass de l'objet
+    public CollisionManager collisionManager = null;
 
     /**
      * <p lang="en">Instantiate a scene's object</p>
@@ -42,5 +46,28 @@ public class SceneObject extends TypeObject{
      */
     public void addScript(Script script){
         scripts.add(script);
+    }
+
+    public void setCollisionManager(CollisionManager collisionManager){
+        this.collisionManager = collisionManager;
+        this.collisionManager.start();
+    }
+
+    public void createCollisionManager(CompoundCollider colliders){
+        this.collisionManager = new CollisionManager(this);
+        this.collisionManager.addCompoundCollider(colliders);
+        this.collisionManager.start();
+    }
+
+    public void update() throws ColliderException {
+        for (Script script : scripts){
+            script.update();
+        }
+        transform.appliquerTransform();
+        if (collisionManager != null){
+            if (collisionManager.colliders == null)
+                throw new ColliderException("Un collider est manquant sur un CollisionManager");
+            collisionManager.update();
+        }
     }
 }

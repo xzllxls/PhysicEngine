@@ -75,4 +75,11 @@ public abstract class TypePoint {
         z += vector.z;
         return this;
     }
+
+    public static double distance(TypePoint p1, TypePoint p2){
+        double x = p1.x - p2.x;
+        double y = p1.y - p2.y;
+        double z = p1.z - p2.z;
+        return Math.sqrt(x * x + y * y + z * z);
+    }
 }

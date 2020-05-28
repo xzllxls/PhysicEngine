@@ -64,6 +64,7 @@ public abstract class TypePrism {
      * @param pos Position absolue
      */
     public void render(Graphics g, Position pos){
+        sortPolygons();
         for (TypePolygon poly : polygons)
             poly.render(g, pos);
     }

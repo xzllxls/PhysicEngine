@@ -1,5 +1,7 @@
 package Objects.Rendering;
 
+import Engine.Scene;
+import Engine.TypePoint;
 import Objects.Position;
 
 import java.awt.*;
@@ -117,6 +119,10 @@ public abstract class TypePolygon {
         return sum / vertices.length;
     }
 
+    public Vertex averagePosition(){
+        return PolygonParser.breakPolygon(this);
+    }
+
     /**
      * <p lang="en">Sort the polygon</p>
      * <p lang="fr">Trie les polygones</p>
@@ -127,7 +133,7 @@ public abstract class TypePolygon {
         ArrayList<TypePolygon> list = new ArrayList<>(Arrays.asList(polygons));
 
         list.sort((o1, o2) -> {
-            double diff = o2.averageDepth() - o1.averageDepth();
+            double diff = TypePoint.distance(o2.averagePosition(), Scene.camera.pos) - TypePoint.distance(o1.averagePosition(), Scene.camera.pos);
             if (diff > 0)
                 return 1;
             else if (diff < 0)

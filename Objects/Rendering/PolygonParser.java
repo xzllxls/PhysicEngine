@@ -29,7 +29,7 @@ public class PolygonParser {
      * @param polygon Polygone
      * @return Vertex central
      */
-    private static Vertex breakPolygon(TypePolygon polygon){
+    public static Vertex breakPolygon(TypePolygon polygon){
         Vertex vertex = new Vertex(0,0,0);
         for (Vertex v : polygon.vertices){
             vertex.x += v.x;
