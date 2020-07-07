@@ -4,6 +4,9 @@ import Engine.Component;
 import Engine.PhysicEngine;
 import Engine.Vector;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * <p lang="en">Transform component</p>
  * <p lang="fr">Composante de mouvement</p>
@@ -16,6 +19,7 @@ public class Transform extends Component {
     public Velocity rotationVelocity = new Velocity(0,0,0);
     public Acceleration acceleration = new Acceleration(0,0,0);
     public Acceleration rotationAcceleration = new Acceleration(0,0,0);
+    private ArrayList<Force> forces = new ArrayList<>();
 
     /**
      * <p lang="en">Instantiate a transform component</p>
@@ -99,6 +103,22 @@ public class Transform extends Component {
         }
     }
 
+    public void setVelocity(double x, double y, double z){
+        this.velocity.set(x, y, z);
+    }
+
+    public void setAcceleration(double x, double y, double z){
+        this.acceleration.set(x, y, z);
+    }
+
+    public void setRotationVelocity(double x, double y, double z){
+        this.rotationVelocity.set(x, y, z);
+    }
+
+    public void setRotationAcceleration(double x, double y, double z){
+        this.rotationAcceleration.set(x, y, z);
+    }
+
     /**
      * <p lang="en">Applied acceleration and velocity vector</p>
      * <p lang="fr">Applique les vecteurs d'accélération et de vitesse</p>
@@ -115,13 +135,13 @@ public class Transform extends Component {
     private void appliquerAcceleration(){
         Acceleration acc = new Acceleration(acceleration);
         acc.appliquerVecteur(new Force(PhysicEngine.GRAVITY_VECTOR));
-        acc.appliquerVecteur((new Force(PhysicEngine.AIR_RESISTANCE_VECTOR)).scale(velocity).exp(1,2));
+        acc.appliquerVecteur((new Force(PhysicEngine.AIR_RESISTANCE_VECTOR)).scale(velocity));
         if (acc.linearDistance != 0) {
             velocity.appliquerVecteur(acc.scale(1.0 / PhysicEngine.CONSTANT_FRAME));
             velocity.roundMin(PhysicEngine.VECTOR_MIN_LIMIT);
         }
         acc = new Acceleration(rotationAcceleration);
-        acc.appliquerVecteur((new Force(PhysicEngine.AIR_RESISTANCE_VECTOR)).scale(rotationVelocity).exp(1,2));
+        acc.appliquerVecteur((new Force(PhysicEngine.AIR_RESISTANCE_VECTOR)).scale(rotationVelocity));
         if (acc.linearDistance != 0) {
             rotationVelocity.appliquerVecteur(acc.scale(1.0 / PhysicEngine.CONSTANT_FRAME));
             rotationVelocity.roundMin(PhysicEngine.VECTOR_MIN_LIMIT);
@@ -133,7 +153,6 @@ public class Transform extends Component {
      * <p lang="fr">Appliquer la vitesse sur la position</p>
      */
     private void appliquerVelocity(){
-        System.out.println(velocity.y);
         if (velocity.linearDistance != 0)
             translate(new Velocity(velocity).scale(1.0/PhysicEngine.CONSTANT_FRAME));
         if (rotationVelocity.linearDistance != 0)
@@ -146,8 +165,32 @@ public class Transform extends Component {
      * @param forces Forces à appliquer
      */
     public void appliquerForce(Force... forces){
+        this.forces.addAll(Arrays.asList(forces));
+        calculAcceleration();
+    }
+
+    private void calculAcceleration(){
+        acceleration.zero();
         for (Force force : forces){
-            acceleration.appliquerVecteur(new Acceleration(force.x, force.y, force.z).scale(1.0/parent.mass));
+            acceleration.appliquerVecteur(force);
         }
+    }
+
+    public Force getInverseForce(){
+        return (Force)getForce().inverse();
+    }
+
+    public Force[] getInverseForceGroup(){
+        Force[] forces1 = new Force[forces.size()];
+        for (int i = 0; i < forces.size(); i++)
+            forces1[i] = (Force) new Force(forces.get(i)).inverse();
+        return forces1;
+    }
+
+    public Force getForce(){
+        Force force = new Force();
+        for (Force force1 : forces)
+            force.appliquerVecteur(force1);
+        return force;
     }
 }

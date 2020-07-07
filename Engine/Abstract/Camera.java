@@ -7,7 +7,7 @@ import Objects.Rotation;
  * @author Linden Brochu
  */
 public class Camera {
-    public Position pos = new Position(0,0,-10);
+    public Position pos = new Position(0,0,0);
     public Rotation rot = new Rotation(0,0,0);
     public double fov = 180;
 
@@ -16,4 +16,8 @@ public class Camera {
     }
 
     public CameraType type = CameraType.Perspective;
+
+    public void setPos(double x, double y, double z){
+        pos.setPosition(x, y, z);
+    }
 }

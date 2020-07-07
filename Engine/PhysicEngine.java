@@ -9,7 +9,7 @@ import Objects.Force;
  */
 public class PhysicEngine {
     public static final double GRAVITY = -10; //linearValue
-    public static final double AIR_RESISTANCE = -1; //linearValue
+    public static final double AIR_RESISTANCE = -0.1; //linearValue
     public static final int CONSTANT_FRAME = 60;
     public static final double PI = 3.141592653589793; //+/- 1cm de perte par milliers de km
     public static final double PIXEL_PER_METER = 10; //Nb pixel pour former 1 mètre

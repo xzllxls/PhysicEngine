@@ -166,6 +166,7 @@ public abstract class Vector {
             this.y = 0;
         if (this.z < zMin && this.z > -zMin)
             this.z = 0;
+        setLinearDistance();
         return this;
     }
 
@@ -182,6 +183,7 @@ public abstract class Vector {
             this.y = 0;
         if (this.z < min && this.z > -min)
             this.z = 0;
+        setLinearDistance();
         return this;
     }
 
@@ -197,6 +199,7 @@ public abstract class Vector {
             this.x *= ratio;
             this.y *= ratio;
             this.z *= ratio;
+            setLinearDistance();
         }
         return this;
     }
@@ -205,6 +208,27 @@ public abstract class Vector {
         this.x = Math.pow(this.x, topExp / bottomExp);
         this.y = Math.pow(this.y, topExp / bottomExp);
         this.z = Math.pow(this.z, topExp / bottomExp);
+        setLinearDistance();
         return this;
+    }
+
+    public Vector set(double x, double y, double z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        setLinearDistance();
+        return this;
+    }
+
+    public Vector zero(){
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+        this.linearDistance = 0;
+        return this;
+    }
+
+    public Vector inverse(){
+        return scale(-1);
     }
 }
