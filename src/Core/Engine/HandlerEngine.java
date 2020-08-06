@@ -6,4 +6,8 @@ public class HandlerEngine extends StaticBaseEngine {
     protected boolean assertAllModuleExist() {
         return true;
     }
+
+    public static void setModule() {
+
+    }
 }
